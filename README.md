@@ -1,3 +1,2 @@
 # hello-world
-My name is Umer Tariq. 
-This is my practice repository
+This repository is intended for practice and learning purposes.
