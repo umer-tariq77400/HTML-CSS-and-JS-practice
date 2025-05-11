@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+</head>
+<body>
+    <h1>Login Form</h1>
+    <br>
+    <form action="/login" method="post">
+        <label for="username-email">Username/Email:</label>
+        <input type="text" id="username-email" name="username-email" placeholder="Enter username or email" 
+               pattern="^[a-zA-Z0-9._]+$" title="Username can only contain letters, numbers, underscores, and periods." required>
+        <br><br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+        <br><br> 
+        <input type="submit" value="Submit">
+        <input type="reset" value="Reset">
+    </form>
+</body>
+</html>
