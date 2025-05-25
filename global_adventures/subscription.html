@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <title>Global Adventures - Subscription</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Subscribe to Global Adventures for the latest travel updates and offers.">
+    <meta name="keywords" content="subscription, global adventures, travel, updates, offers">
+    <meta name="author" content="Global Adventures Team">
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <header role="banner">
+        <h1 itemprop="headline">Subscribe to Global Adventures</h1>
+        <p itemprop="description">Stay updated with the latest travel news, offers, and adventures. Subscribe now!</p>
+    </header>
+    <!--Navigation bar-->
+    <nav role="navigation" aria-label="Main Navigation">
+        <ul>
+            <li><a href="index.html" aria-label="Home">Home</a></li>
+            <li><a href="islamabad.html" aria-label="Islamabad">Islamabad</a></li>
+            <li><a href="lahore.html" aria-label="Lahore">Lahore</a></li>
+            <li><a href="karachi.html" aria-label="Karachi">Karachi</a></li>
+            <li><a href="contact.html" aria-label="Contact Us">Contact Us</a></li>
+            <li><a href="subscription.html" aria-current="page" aria-label="Subscribe">Subscribe</a></li>
+        </ul>
+    </nav>
+    <main>
+        <form action="/subscribe" method="post">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required placeholder="Enter your email">
+            <label>
+                <input type="checkbox" id="terms" name="terms" required>
+                I agree to the terms and conditions
+            </label>
+            <button type="submit">Subscribe</button>
+        </form>
+    </main>
+
+    <!--Footer-->
+    <footer role="contentinfo">
+        <nav aria-label="Footer Links">
+            <ul>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms of use</a></li>
+            </ul>
+        </nav>
+        <div itemscope itemtype="http://schema.org/Organization">
+            <div class="contact-info">
+                <p>Email: <a href="mailto:info@globaladventures.com" itemprop="email">info@globaladventures.com</a>
+                </p>
+                <p>Phone: <span itemprop="telephone">+123-456-7890</span></p>
+                <p><a href="contact.html">Contact Us via Form</a></p>
+            </div>
+            <div class="social-media">
+                <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer"
+                    aria-label="Global Adventures on Facebook (opens in new tab)"><i class="fab fa-facebook-f"
+                        aria-hidden="true"></i></a>
+                <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer"
+                    aria-label="Global Adventures on Instagram (opens in new tab)"><i class="fab fa-instagram"
+                        aria-hidden="true"></i></a>
+                <a href="https://x.com" target="_blank" rel="noopener noreferrer"
+                    aria-label="Global Adventures on X (opens in new tab)"><i class="fab fa-twitter"
+                        aria-hidden="true"></i></a>
+                <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer"
+                    aria-label="Global Adventures on LinkedIn (opens in new tab)"><i class="fab fa-linkedin-in"
+                        aria-hidden="true"></i></a>
+            </div>
+            <p>&copy; 2024 <span itemprop="name">Global Adventures</span>. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+
+</html>
