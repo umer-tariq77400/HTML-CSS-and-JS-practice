@@ -1,0 +1,7 @@
+.header {
+  background-image: radial-gradient(circle, #ff9900, #f5db71);
+  height: 500px;
+  text-align: center;
+  color: white;
+  padding-top: 100px;
+}
