@@ -1,0 +1,51 @@
+/* Base styles */
+body {
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+}
+/* Header styles */
+header {
+    background-color: #333333;
+    padding: 20px;
+    text-align: center;
+}
+#header {
+    border-bottom: 3px dashed #000;
+}
+h1 {
+    color: green !important;
+}
+/* Section styles */
+section {
+    margin: 20px;
+}
+p {
+    color: red;
+}
+/* Foother styles */
+footer {
+    background-color: #333333;
+    padding: 10px;
+    text-align: center;
+}
+a[href*="mailto:"] {
+    color: orange
+}
+a:hover {
+    color:white
+}
+
+h2 {
+    color: black;
+}
+.highlight {
+    background-color: orange;
+    color: white;
+    padding: 4px;
+}
+p::first-line {
+    font-weight: bold;
+}
+header + main {
+    border-top: 1px solid gray;
+}
