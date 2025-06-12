@@ -1,0 +1,212 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+}
+
+/*Adding the fade in effect to the header */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes background-slide {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
+header {
+  background-image: linear-gradient(to right, #4a90e2, #50e3c2);
+  background-size: 200% 200%;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 2s ease;
+  animation: background-slide 3s ease-in-out infinite alternate;
+}
+
+header.visible {
+  opacity: 1;
+}
+
+/*Adding styles and animation to the product card*/
+@keyframes slide-fade-in {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.product-container {
+  background-image: linear-gradient(to right, #a0a0a0, #ffffff);
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 50%;
+  margin: 50px auto;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  animation: slide-fade-in 1s ease-in-out;
+}
+
+.product-intro {
+  display: flex;
+  flex-direction: column;
+}
+
+.product-intro img {
+  width: 100%;
+  height: auto;
+  border-radius: 70px;
+}
+
+@keyframes pulse-shadow {
+  0% {
+    scale: 1;
+    box-shadow: 0 0 5px rgba(89, 89, 89, 0.5);
+  }
+  50% {
+    scale: 1.05;
+    box-shadow: 0 0 10px rgb(30, 30, 30);
+  }
+  100% {
+    scale: 1;
+    box-shadow: 0 0 5px rgba(89, 89, 89, 0.5);
+  }
+}
+
+.product-intro button {
+  background-color: #4a90e2;
+  color: white;
+  border: none;
+  margin-top: 20px;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  animation: pulse-shadow 1s infinite;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+button:hover {
+  background-color: #50e3c2;
+}
+
+.features {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.features h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.features ul {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.feature-item {
+  background-image: linear-gradient(to right, #e0e0e0, #ffffff);
+  background-size: 200% 200%;
+  color: #333;
+  border-radius: 5px;
+  padding: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  animation: background-slide 1s ease-in-out infinite alternate;
+  transition: transform 0.3s ease;
+}
+.feature-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/*Adding styles to the footer */
+footer {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+  width: 100%;
+}
+
+/* Responsive Design - Media Queries */
+@media (max-width: 768px) {
+  .product-container {
+    flex-direction: column;
+    width: 90%;
+    margin: 20px auto;
+    padding: 15px;
+  }
+
+  .product-intro {
+    margin-bottom: 20px;
+  }
+
+  .product-intro img {
+    border-radius: 20px;
+    max-width: 250px;
+    margin: 0 auto;
+  }
+
+  header {
+    padding: 15px;
+  }
+
+  header h1 {
+    font-size: 1.5em;
+  }
+
+  .features h2 {
+    font-size: 20px;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .product-container {
+    width: 95%;
+    margin: 10px auto;
+    padding: 10px;
+  }
+
+  .product-intro img {
+    max-width: 200px;
+    border-radius: 15px;
+  }
+
+  .product-intro button {
+    padding: 12px 24px;
+    font-size: 16px;
+  }
+
+  header h1 {
+    font-size: 1.2em;
+  }
+
+  .feature-item {
+    padding: 8px;
+    font-size: 14px;
+  }
+}
