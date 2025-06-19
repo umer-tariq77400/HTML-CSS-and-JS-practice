@@ -24,29 +24,36 @@ This project demonstrates a basic webpage about Sass essentials, showcasing key 
 ## Sass Features Demonstrated
 
 ### Variables
+
 ```scss
 $primary-color: #007bff;
 $font-size: 16px;
 ```
+
 Used for consistent color (`#007bff`) and font size (`16px`) throughout the project.
 
 ### Mixins
+
 ```scss
 @mixin rounded-corners($radius) {
   border-radius: $radius;
 }
 ```
+
 Reusable mixin for applying border-radius with customizable values.
 
 ### Nesting
+
 CSS selectors are nested within parent selectors, improving code organization and readability.
 
 ### Color Functions
+
 - `lighten($primary-color, 40%)` creates lighter background colors
 
 ## Page Content
 
 The HTML page includes:
+
 - **Header**: Welcome title
 - **About Section**: Brief description of Sass
 - **Features Section**: List of Sass capabilities (Variables, Mixins, Nesting)
