@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>World Trivia</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Skip to main content link for keyboard users -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Header -->
+    <header>
+        <h1>World Trivia</h1>
+        <nav aria-label="Main navigation">
+            <ul>
+                <li><a href="#home" aria-label="Go to home section">Home</a></li>
+                <li><a href="#trivia" aria-label="Go to trivia facts section">Trivia</a></li>
+                <li><a href="#categories" aria-label="Go to categories section">Categories</a></li>
+                <li><a href="#scores" aria-label="Go to scores leaderboard">Scores</a></li>
+                <li><a href="#contact" aria-label="Go to contact form">Contact</a></li>
+                <li><a href="#subscribe" aria-label="Go to subscription section">Subscribe</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main-content">
+        <!-- Home Section -->
+        <section id="home" aria-labelledby="home-heading">
+            <h2 id="home-heading">Welcome to World Trivia!</h2>
+            <p>Test your knowledge about countries, cultures, and fascinating facts from around the globe. Challenge
+                yourself with our diverse collection of trivia questions covering geography, history, traditions, and
+                more. Whether you're a trivia enthusiast or just curious about the world, our interactive quizzes will
+                entertain and educate you while exploring the amazing diversity of our planet.</p>
+        </section>
+
+        <!-- Trivia Facts Section -->
+        <section id="trivia" aria-labelledby="trivia-heading">
+            <h2 id="trivia-heading">Amazing World Facts</h2>
+            <div class="trivia-container">
+                <article class="trivia-item">
+                    <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop"
+                        alt="The Great Wall of China stretching across mountainous terrain in morning light">
+                    <div class="trivia-content">
+                        <h3>The Great Wall of China</h3>
+                        <p>Contrary to popular belief, the Great Wall of China is not visible from space with the naked
+                            eye. This myth has been debunked by astronauts who have actually been to space!</p>
+                    </div>
+                </article>
+
+                <article class="trivia-item">
+                    <img src="https://images.unsplash.com/photo-1517021897933-0e0319cfbc28?w=400&h=300&fit=crop"
+                        alt="Pristine Antarctica landscape with icebergs and snow-covered mountains">
+                    <div class="trivia-content">
+                        <h3>Antarctica's Unique Status</h3>
+                        <p>Antarctica is the only continent without a time zone. Scientists there typically use the time
+                            zone of their home country or the nearest research station.</p>
+                    </div>
+                </article>
+
+                <article class="trivia-item">
+                    <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=400&h=300&fit=crop"
+                        alt="Aerial view of lush Amazon rainforest canopy with river winding through">
+                    <div class="trivia-content">
+                        <h3>Amazon Rainforest</h3>
+                        <p>The Amazon rainforest produces about 20% of the world's oxygen and is home to 10% of all
+                            known species on Earth. It's larger than the next two largest rainforests combined!</p>
+                    </div>
+                </article>
+
+                <article class="trivia-item">
+                    <img src="https://images.unsplash.com/photo-1581833971358-2c8b550f87b3?w=400&h=300&fit=crop"
+                        alt="Golden sand dunes of the Sahara Desert under clear blue sky">
+                    <div class="trivia-content">
+                        <h3>The Sahara Desert</h3>
+                        <p>The Sahara Desert is almost as large as the entire United States! It's also expanding
+                            southward at a rate of 30 miles per year due to climate change.</p>
+                    </div>
+                </article>
+
+                <article class="trivia-item">
+                    <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=300&fit=crop"
+                        alt="Green and purple Aurora Borealis dancing across dark Arctic sky">
+                    <div class="trivia-content">
+                        <h3>Northern Lights</h3>
+                        <p>The Northern Lights (Aurora Borealis) are caused by solar particles colliding with Earth's
+                            magnetic field. They can appear in many colors, but green is the most common.</p>
+                    </div>
+                </article>
+
+                <article class="trivia-item">
+                    <img src="https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=400&h=300&fit=crop"
+                        alt="Deep blue ocean waters representing the Mariana Trench depths">
+                    <div class="trivia-content">
+                        <h3>Mariana Trench</h3>
+                        <p>The deepest part of Earth's oceans is the Mariana Trench in the Pacific, reaching depths of
+                            over 36,000 feet. If Mount Everest were placed in it, the peak would still be over a mile
+                            underwater!</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Categories Section -->
+        <section id="categories" aria-labelledby="categories-heading">
+            <h2 id="categories-heading">Trivia Categories</h2>
+            <ul class="categories-list">
+                <li><a href="#geography" aria-label="Explore geography trivia questions">🌍 Geography</a></li>
+                <li><a href="#history" aria-label="Explore history trivia questions">📚 History</a></li>
+                <li><a href="#culture" aria-label="Explore culture and traditions trivia questions">🎭 Culture &
+                        Traditions</a></li>
+                <li><a href="#science" aria-label="Explore science and nature trivia questions">🔬 Science & Nature</a>
+                </li>
+                <li><a href="#landmarks" aria-label="Explore famous landmarks trivia questions">🏛️ Famous Landmarks</a>
+                </li>
+                <li><a href="#wildlife" aria-label="Explore wildlife and animals trivia questions">🦁 Wildlife &
+                        Animals</a></li>
+                <li><a href="#languages" aria-label="Explore languages trivia questions">🗣️ Languages</a></li>
+                <li><a href="#food" aria-label="Explore food and cuisine trivia questions">🍜 Food & Cuisine</a></li>
+                <li><a href="#sports" aria-label="Explore sports trivia questions">⚽ Sports</a></li>
+                <li><a href="#music" aria-label="Explore music and arts trivia questions">🎵 Music & Arts</a></li>
+            </ul>
+        </section>
+
+        <!-- Scores Section -->
+        <section id="scores" aria-labelledby="scores-heading">
+            <h2 id="scores-heading">Top Scores Leaderboard</h2>
+            <div class="table-container">
+                <table class="scores-table" aria-labelledby="scores-heading" aria-describedby="scores-description">
+                    <caption id="scores-description" class="visually-hidden">
+                        Leaderboard showing top 8 players with their ranks, names, scores, countries, categories, and
+                        dates
+                    </caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">Rank</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Score</th>
+                            <th scope="col">Country</th>
+                            <th scope="col">Category</th>
+                            <th scope="col">Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td data-label="Rank">🥇 1</td>
+                            <td data-label="Name">Emma Johnson</td>
+                            <td data-label="Score">9,850</td>
+                            <td data-label="Country">🇺🇸 USA</td>
+                            <td data-label="Category">Geography</td>
+                            <td data-label="Date">2024-12-15</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Rank">🥈 2</td>
+                            <td data-label="Name">Hiroshi Tanaka</td>
+                            <td data-label="Score">9,720</td>
+                            <td data-label="Country">🇯🇵 Japan</td>
+                            <td data-label="Category">Culture</td>
+                            <td data-label="Date">2024-12-14</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Rank">🥉 3</td>
+                            <td data-label="Name">Maria Rodriguez</td>
+                            <td data-label="Score">9,680</td>
+                            <td data-label="Country">🇪🇸 Spain</td>
+                            <td data-label="Category">History</td>
+                            <td data-label="Date">2024-12-13</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Rank">4</td>
+                            <td data-label="Name">Alexander Smith</td>
+                            <td data-label="Score">9,520</td>
+                            <td data-label="Country">🇬🇧 UK</td>
+                            <td data-label="Category">Science</td>
+                            <td data-label="Date">2024-12-12</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Rank">5</td>
+                            <td data-label="Name">Sophie Laurent</td>
+                            <td data-label="Score">9,340</td>
+                            <td data-label="Country">🇫🇷 France</td>
+                            <td data-label="Category">Languages</td>
+                            <td data-label="Date">2024-12-11</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Rank">6</td>
+                            <td data-label="Name">Ahmed Hassan</td>
+                            <td data-label="Score">9,180</td>
+                            <td data-label="Country">🇪🇬 Egypt</td>
+                            <td data-label="Category">Landmarks</td>
+                            <td data-label="Date">2024-12-10</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Rank">7</td>
+                            <td data-label="Name">Chen Wei</td>
+                            <td data-label="Score">9,050</td>
+                            <td data-label="Country">🇨🇳 China</td>
+                            <td data-label="Category">Food & Cuisine</td>
+                            <td data-label="Date">2024-12-09</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Rank">8</td>
+                            <td data-label="Name">Lucas Silva</td>
+                            <td data-label="Score">8,920</td>
+                            <td data-label="Country">🇧🇷 Brazil</td>
+                            <td data-label="Category">Sports</td>
+                            <td data-label="Date">2024-12-08</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" aria-labelledby="contact-heading">
+            <h2 id="contact-heading">Get in Touch</h2>
+            <p>Have a question about our trivia games? Want to suggest a new category? We'd love to hear from you! Send
+                us a message and we'll get back to you as soon as possible.</p>
+
+            <form class="contact-form" action="#" method="POST" aria-labelledby="contact-heading">
+                <div class="visually-hidden">
+                    <p>This form is for contacting World Trivia. All fields marked with an asterisk (*) are required.
+                    </p>
+                </div>
+
+                <div class="form-group">
+                    <label for="name">Full Name *</label>
+                    <input type="text" id="name" name="name" required placeholder="Enter your full name"
+                        aria-describedby="name-help" autocomplete="name">
+                    <div id="name-help" class="visually-hidden">Enter your first and last name</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address *</label>
+                    <input type="email" id="email" name="email" required placeholder="Enter your email address"
+                        aria-describedby="email-help" autocomplete="email">
+                    <div id="email-help" class="visually-hidden">We'll use this to respond to your message</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="subject">Subject *</label>
+                    <select id="subject" name="subject" required aria-describedby="subject-help">
+                        <option value="">Choose a topic...</option>
+                        <option value="general">General Inquiry</option>
+                        <option value="feedback">Feedback</option>
+                        <option value="bug">Report a Bug</option>
+                        <option value="suggestion">Suggestion</option>
+                        <option value="partnership">Partnership</option>
+                    </select>
+                    <div id="subject-help" class="visually-hidden">Select the category that best describes your message
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Message *</label>
+                    <textarea id="message" name="message" rows="6" required placeholder="Tell us what's on your mind..."
+                        aria-describedby="message-help"></textarea>
+                    <div id="message-help" class="visually-hidden">Please provide details about your inquiry or feedback
+                    </div>
+                </div>
+
+                <button type="submit" class="submit-btn" aria-describedby="submit-help">
+                    <span>Send Message</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                        aria-hidden="true" focusable="false">
+                        <path d="M22 2L11 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                        <path d="M22 2L15 22L11 13L2 9L22 2Z" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </button>
+                <div id="submit-help" class="visually-hidden">Click to send your message to World Trivia</div>
+            </form>
+        </section>
+
+        <!-- Subscribe Section -->
+        <section id="subscribe" aria-labelledby="subscribe-heading">
+            <h2 id="subscribe-heading">Never Miss a Challenge!</h2>
+            <p>Get a new world trivia question delivered to your inbox every day. Test your knowledge and learn
+                something fascinating about our planet!</p>
+
+            <div class="subscribe-benefits" role="list" aria-label="Subscription benefits">
+                <div class="benefit" role="listitem">
+                    <span class="benefit-icon" aria-hidden="true">🧠</span>
+                    <span>Daily Brain Teasers</span>
+                </div>
+                <div class="benefit" role="listitem">
+                    <span class="benefit-icon" aria-hidden="true">🌍</span>
+                    <span>World Knowledge</span>
+                </div>
+                <div class="benefit" role="listitem">
+                    <span class="benefit-icon" aria-hidden="true">🎯</span>
+                    <span>Track Your Progress</span>
+                </div>
+            </div>
+
+            <button class="subscribe-btn pulse-animation" aria-describedby="subscribe-description">
+                <span class="btn-text">Subscribe to Puzzle of the Day</span>
+                <span class="btn-icon" aria-hidden="true">✨</span>
+            </button>
+
+            <div id="subscribe-description" class="visually-hidden">
+                Click to subscribe to daily trivia questions. Free service with no spam.
+            </div>
+
+            <p class="subscribe-note">Free forever • No spam • Unsubscribe anytime</p>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>World Trivia</h3>
+                <p>Expanding minds, one question at a time.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <nav aria-label="Footer navigation">
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#trivia">Trivia Facts</a></li>
+                        <li><a href="#categories">Categories</a></li>
+                        <li><a href="#scores">Leaderboard</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="footer-section">
+                <h4>Accessibility</h4>
+                <p>We're committed to making our content accessible to everyone.</p>
+                <a href="#" aria-label="Report accessibility issues">Report Issues</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 World Trivia. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Enhanced header scroll behavior
+        window.addEventListener('scroll', function () {
+            const header = document.querySelector('header');
+            const scrolled = window.pageYOffset;
+
+            if (scrolled > 50) {
+                header.style.boxShadow = '0 6px 25px rgba(0, 0, 0, 0.15)';
+                header.style.backdropFilter = 'blur(15px)';
+            } else {
+                header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.1)';
+                header.style.backdropFilter = 'blur(10px)';
+            }
+        });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const headerHeight = document.querySelector('header').offsetHeight;
+                    const targetPosition = target.offsetTop - headerHeight - 20;
+
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
