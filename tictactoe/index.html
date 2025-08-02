@@ -8,10 +8,48 @@
     <title>TicTacToe</title>
 </head>
 <body>
-    <p>hello</p>
-    <p>hello</p>
-    <p>hello</p>
-    <p>hello</p>
-    <p>hello</p>
+    <!--Simple header-->
+    <header>
+        <h1>Tic Tac Toe</h1>
+        <p>Play with your friends</p>
+    </header>
+
+    <!--The actual board-->
+    <main>
+        <!--Game stats-->
+        <div class="stats">
+            <!--Change turn drop down-->
+            <select id="turn_selection">
+                <option value="✔">✔</option>
+                <option value="❌">❌</option>
+            </select>
+            <!--Turn-->
+            <div class="turn">
+                <p>Current Turn: <span id="current-turn"></span></p>
+            </div>
+            <!--Restart button-->
+            <div class="restart">
+                <button class="restart-button" onclick="restart()">Restart Game</button>
+            </div>
+        </div>
+
+
+        <!--Game board-->
+        <div class="game-board">
+            <p class="score">✔: <span id="✔">0</span></p>
+            <div class="board">
+                <div class="cell" id="cell-0" onclick="mark('cell-0')"></div>
+                <div class="cell" id="cell-1" onclick="mark('cell-1')"></div>
+                <div class="cell" id="cell-2" onclick="mark('cell-2')"></div>
+                <div class="cell" id="cell-3" onclick="mark('cell-3')"></div>
+                <div class="cell" id="cell-4" onclick="mark('cell-4')"></div>
+                <div class="cell" id="cell-5" onclick="mark('cell-5')"></div>
+                <div class="cell" id="cell-6" onclick="mark('cell-6')"></div>
+                <div class="cell" id="cell-7" onclick="mark('cell-7')"></div>
+                <div class="cell" id="cell-8" onclick="mark('cell-8')"></div>
+            </div>
+            <p class="score">❌: <span id="❌">0</span></p>
+        </div>
+    </main>
 </body>
 </html>
