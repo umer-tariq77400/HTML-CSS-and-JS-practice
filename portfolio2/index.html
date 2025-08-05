@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="script.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <title>Umer - Developer Portfolio</title>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="left">Umer's Portfolio</div>
+            <div class="right">
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="first">
+            <div class="firstLeft">
+                <p>Hi my name is <span class="highlight">Umer</span> and I am a</p>
+                <p><span id="element"></span></p>
+                <button>Get in touch</button>
+            </div>
+            <div class="firstRight">
+                <img src="bg.png" alt="Hero Image" />
+            </div>
+        </section>
+
+        <hr>
+        <!-- Experience Section -->
+        <section class="experience">
+            <h2 class="section-title">Experience</h2>
+            <div class="timeline">
+                <div class="timeline-container left-container">
+                    <div class="timeline-content">
+                        <h2>Web Developer Intern</h2>
+                        <small>2023-2024</small>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut
+                            labore et dolore magna aliqua.</p>
+                    </div>
+                </div>
+                <div class="timeline-container right-container">
+                    <div class="timeline-content">
+                        <h2>IT Specialist</h2>
+                        <small>2022-2023</small>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut
+                            labore et dolore magna aliqua.</p>
+                    </div>
+                </div>
+                <div class="timeline-container left-container">
+                    <div class="timeline-content">
+                        <h2>Frontend Developer</h2>
+                        <small>2021-2022</small>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut
+                            labore et dolore magna aliqua.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <div class="footer-content">
+                <p>&copy; 2024 Umer's Portfolio. All Rights Reserved.</p>
+                <ul class="socials">
+                    <li><a href="#">GitHub</a></li>
+                    <li><a href="#">LinkedIn</a></li>
+                    <li><a href="#">Twitter</a></li>
+                </ul>
+            </div>
+        </footer>
+
+    </main>
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+    <script>
+        var typed = new Typed('#element', {
+            strings: ['Web Developer', 'IT Specialist'],
+            typeSpeed: 60,
+        });
+    </script>
+</body>
+
+</html>
