@@ -1,0 +1,163 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  background-image: url("bg.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+/* Navigation styles */
+
+nav ul {
+  background-color: rgb(17, 17, 28);
+  display: flex;
+  align-items: center;
+  list-style: none;
+  height: 60px;
+  color: white;
+}
+
+nav ul li {
+  padding: 0 20px;
+  cursor: pointer;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  font-weight: bolder;
+  font-size: 1.5rem;
+}
+
+.brand img {
+  height: 45px;
+  width: 45px;
+  margin: 0 8px;
+}
+
+/* Main content styles */
+
+.container {
+  background: transparent;
+  color: white;
+  width: 50%;
+}
+
+.container h1 {
+  font-size: 2rem;
+  margin: 30px;
+}
+
+.song {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.song img {
+  height: 50px;
+  width: 50px;
+  border-radius: 5px;
+}
+
+.songList {
+  height: 300px;
+  overflow-y: auto;
+  background-color: rgba(17, 17, 28, 0.8);
+  border-radius: 10px;
+}
+
+.songList::-webkit-scrollbar {
+  width: 8px;
+}
+.songList::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 4px;
+}
+.songList::-webkit-scrollbar-track {
+  background-color: rgba(17, 17, 28, 0.8);
+}
+
+.songControls {
+  display: flex;
+  align-items: center;
+}
+
+/* Action bar styles */
+
+.actionBar {
+  background-color: rgb(21, 21, 28);
+  color: white;
+  height: 150px;
+  width: 80%;
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 80px;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.songInfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 75%;
+}
+
+.songInfoDetails {
+  display: flex;
+  align-items: center;
+}
+
+#playingGif {
+  width: 40px;
+  height: 20px;
+  margin-right: 10px;
+  opacity: 0;
+  transition: opacity 0.4s ease-in-out;
+}
+
+.songInfo h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: white;
+}
+
+.songInfo i {
+  cursor: pointer;
+}
+
+.songSlider {
+  width: 80%;
+  height: 10px;
+  background-color: rgb(17, 17, 28);
+  border-radius: 5px;
+  outline: none;
+  cursor: pointer;
+}
+
+.actionButtons {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 75%;
+}
+.actionButtons i {
+  cursor: pointer;
+}
+
+.actionButtons i.active {
+  color: #1ed760; /* Spotify green */
+}
