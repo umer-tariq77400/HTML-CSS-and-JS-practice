@@ -19,7 +19,7 @@ songs = [
     duration: "04:33",
   },
   {
-    name: "Different Heaven & EH!DE - My Heart",
+    name: "Different Heaven & EH!DE",
     cover: "covers/4.jpg",
     filePath: "songs/4.mp3",
     duration: "04:27",
