@@ -97,6 +97,9 @@ let loopBtn = document.getElementById("loop");
 let masterSongName = document.getElementById("masterSongName");
 let playingGif = document.getElementById("playingGif");
 
+// Making the song Slider bar 0 at the start
+songSlider.value = 0;
+
 // Function to reset all play icons in the song list to 'play'
 const makeAllPlays = () => {
   songItems.forEach((item) => {
