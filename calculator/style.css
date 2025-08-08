@@ -1,0 +1,122 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #c6c6c6;
+}
+h1 {
+    color: #333;
+    font-size: 4vw;
+    text-align: center;
+    padding: 20px;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.calculator {
+    max-width: 300px;
+    width: 70vw;
+    margin: 50px auto;
+    background-color: rgb(129, 129, 129);
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    padding: 20px;
+    gap: 10px;
+    border: 2px solid #313131;
+    border-radius: 10px;
+    box-shadow: 5px 4px 0px 4px rgba(0, 0, 0, 0.7);
+}
+
+.display {
+    background-color: white;
+    grid-column-start: 1;
+    grid-column-end: 5;
+    padding: 10px;
+    margin: 5px 0px 10px 0px;
+    border: 2px solid black;
+    border-radius: 10px;
+    font-size: 1.5em;
+    outline: none;
+}
+
+button {
+    min-width: 30px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 10px;
+    border: 2px solid black;
+    border-radius: 10px;
+    box-shadow: 2px 2px 0px 1px rgba(0, 0, 0, 0.7);
+    cursor: pointer;
+    transition: box-shadow transform 0.3s ease-in-out;
+}
+
+button:active {
+    box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0);
+    transform: translateX(2px) translateY(2px);
+}
+
+.equal-btn {
+    background-color: #5cb85c;
+    font-size: 30px;
+    grid-column-start: 4;
+    grid-column-end: 5;
+    grid-row-start: 5;
+    grid-row-end: 7;
+}
+
+.sign-btn {
+    font-size: 25px;
+    background-color: #f0ad4e;
+}
+
+.del-btn {
+    background-color: #d9534f;
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 3.5vw; /* smaller heading on very small screens */
+        padding: 12px;
+    }
+
+    .calculator {
+        width: 80vw;
+        max-width: 260px;
+        padding: 12px;
+        gap: 6px;
+    }
+
+    .display {
+        font-size: 1.2em;
+        padding: 8px;
+        margin: 4px 0 8px 0;
+    }
+
+    .button {
+        padding: 8px;
+        font-size: 0.9rem;
+    }
+
+    .equal-btn {
+        font-size: 22px;
+    }
+
+    .sign-btn {
+        font-size: 18px;
+    }
+}
+
