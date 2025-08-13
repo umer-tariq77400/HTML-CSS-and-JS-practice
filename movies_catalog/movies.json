@@ -1,0 +1,72 @@
+[
+    {
+        "id": 1,
+        "title": "Dabangg",
+        "year": 2006,
+        "rating": 5.5,
+        "genre": ["Action", "Crime", "Drama"]
+    },
+    {
+        "id": 2,
+        "title": "Dabangg 2",
+        "year": 2010,
+        "rating": 6.0,
+        "genre": ["Action", "Comedy", "Drama"]
+    },
+    {
+        "id": 3,
+        "title": "Inception",
+        "year": 2010,
+        "rating": 8.8,
+        "genre": ["Sci-Fi", "Thriller", "Action"]
+    },
+    {
+        "id": 4,
+        "title": "The Matrix",
+        "year": 1999,
+        "rating": 8.7,
+        "genre": ["Sci-Fi", "Action", "Adventure"]
+    },
+    {
+        "id": 5,
+        "title": "Interstellar",
+        "year": 2014,
+        "rating": 8.6,
+        "genre": ["Sci-Fi", "Drama", "Adventure"]
+    },
+    {
+        "id": 6,
+        "title": "The Dark Knight",
+        "year": 2008,
+        "rating": 9.0,
+        "genre": ["Action", "Crime", "Thriller"]
+    },
+    {
+        "id": 7,
+        "title": "Forrest Gump",
+        "year": 1994,
+        "rating": 8.8,
+        "genre": ["Drama", "Romance", "Comedy"]
+    },
+    {
+        "id": 8,
+        "title": "Gladiator",
+        "year": 2000,
+        "rating": 8.5,
+        "genre": ["Action", "Adventure", "Drama"]
+    },
+    {
+        "id": 9,
+        "title": "Titanic",
+        "year": 1997,
+        "rating": 7.8,
+        "genre": ["Romance", "Drama", "History"]
+    },
+    {
+        "id": 10,
+        "title": "Jurassic Park",
+        "year": 1993,
+        "rating": 8.1,
+        "genre": ["Adventure", "Sci-Fi", "Thriller"]
+    }
+]

@@ -1,0 +1,179 @@
+/* Global reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Body and container */
+body {
+  font-family: Arial, sans-serif;
+  background: #f4f4f4;
+  color: #333;
+}
+
+/* Correct container spelling from HTML */
+.conatiner {
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 0 15px;
+}
+
+/* Controls section */
+.controls {
+  position: sticky;
+  top: 20px;
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+  padding: 15px;
+  align-items: center;
+  background-color: rgb(144, 144, 144);
+  border-radius: 5px;
+}
+
+/* Search input and button */
+.controls .search {
+  display: flex;
+  flex: 1;
+  min-width: 250px;
+}
+.controls .search input {
+  flex: 1;
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px 0 0 4px;
+}
+.controls .search .searchBtn {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-left: none;
+  background-color: #007BFF;
+  color: #fff;
+  border-radius: 0 4px 4px 0;
+  cursor: pointer;
+}
+.controls .search .searchBtn:hover {
+  background-color: #0056b3;
+}
+
+/* Select dropdowns */
+.controls select {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: #fff;
+  cursor: pointer;
+}
+
+/* Placeholder for sort control alignment */
+.controls .sort {
+  margin-left: auto;
+}
+
+/* Movie catalog grid */
+.catalog {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+/* Movie card styling */
+.movieCard {
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+}
+.movieCard:hover {
+  transform: translateY(-5px);
+}
+
+/* Image container */
+.movieCard .img {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+}
+.movieCard .img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Rating badge */
+.movieCard .rating {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  padding: 4px 6px;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+/* Details section */
+.movieCard .details {
+  padding: 15px;
+}
+.movieCard .title {
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+.movieCard .year {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 10px;
+  display: block;
+}
+.movieCard .genres {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+.movieCard .genre {
+  background: #e0e0e0;
+  color: #555;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+.pagination {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.pagination .previous,
+.pagination .next {
+    width: 130px;
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    color: #333;
+    cursor: pointer;
+    text-align: center;
+    font-size: 20px;
+    border-radius: 5px;
+    transition: background-color 0.2s;
+}
+
+.pagination .previous:hover,
+.pagination .next:hover {
+    background-color: #007BFF;
+    color: #fff;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .controls {
+    flex-direction: column;
+  }
+}

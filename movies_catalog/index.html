@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Movie catalog</title>
+</head>
+
+<body>
+    <div class="conatiner">
+        <!-- Controls for display of movies -->
+        <div class="controls">
+            <div class="search">
+                <input type="text" placeholder="Search for movies...">
+                <button class="searchBtn">Search</button>
+            </div>
+            <div class="genreFilter">
+                <select class="genreSelect">
+                    <option value="all">All Genres</option>
+                    <option value="action">Action</option>
+                    <option value="comedy">Comedy</option>
+                    <option value="drama">Drama</option>
+                    <option value="horror">Horror</option>
+                    <option value="sci-fi">Sci-Fi</option>
+                </select>
+            </div>
+            <div class="yearFilter">
+                <select class="yearSelect">
+                    <option value="all">All Years</option>
+                    <option value="2014">2014</option>
+                    <option value="2010">2010</option>
+                    <option value="2008">2008</option>
+                    <option value="2006">2006</option>
+                    <option value="2000">2000</option>
+                    <option value="1999">1999</option>
+                    <option value="1997">1997</option>
+                    <option value="1994">1994</option>
+                    <option value="1993">1993</option>
+                </select>
+            </div>
+            <div class="sort">
+                <select class="sortSelect">
+                    <option value="">Sort By</option>
+                    <option value="year-asc">Year ↑</option>
+                    <option value="year-desc">Year ↓</option>
+                    <option value="rating-asc">Rating ↑</option>
+                    <option value="rating-desc">Rating ↓</option>
+                </select>
+            </div>
+        </div>
+        <!-- Movies catalog -->
+        <div class="catalog">
+            
+        </div>
+
+        <div class="pagination">
+            <div class="previous">&lt; Previous</div>
+            <div class="next">Next &gt;</div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
