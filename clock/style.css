@@ -1,0 +1,88 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f7f7f7;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+.clock {
+    background-image: url('./clock.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 40vw;
+    height: 40vw;
+    max-width: 420px;
+    max-height: 420px;
+    margin: auto;
+    display: block;
+    position: relative;
+}
+
+/* hands */
+.hour,
+.minute,
+.second {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform-origin: 50% 100%; /* pivot at bottom of the hand */
+    transform: translateX(-50%) translateY(-100%) rotate(0deg);
+    border-radius: 6px;
+}
+
+.hour {
+    width: 6px;
+    height: 25%; /* relative to clock size */
+    background: #222;
+    z-index: 3;
+    border-radius: 6px;
+    transition: transform 0.3s cubic-bezier(.4,2.08,.55,.44);
+}
+
+.minute {
+    width: 4px;
+    height: 33%;
+    background: #333;
+    z-index: 4;
+    transition: transform 0.2s cubic-bezier(.4,2.08,.55,.44);
+}
+
+.second {
+    width: 2px;
+    height: 38%;
+    background: #e33;
+    z-index: 5;
+    transition: transform 0.08s linear;
+}
+
+.center {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 12px;
+    height: 12px;
+    background: #111;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 6;
+    box-shadow: 0 0 0 3px rgba(0,0,0,0.05) inset;
+}
+
+/* Accessibility: respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .hour, .minute, .second { transition: none !important; }
+}
+
+
