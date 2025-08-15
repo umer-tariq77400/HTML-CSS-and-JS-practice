@@ -1,0 +1,309 @@
+/*
+	Markdown to HTML Converter UI Styles
+	- Clean, modern layout
+	- Responsive two-pane editor (left) and preview (right)
+	- Accessible contrast, focus states, and prefers-color-scheme support
+*/
+
+:root {
+	/* Light theme (default) */
+	--bg: #f8fafc;            /* slate-50 */
+	--panel: #ffffff;
+	--fg: #0f172a;            /* slate-900 */
+	--muted: #334155;         /* slate-700 */
+	--border: #e2e8f0;        /* slate-200 */
+	--accent: #2563eb;        /* blue-600 */
+	--accent-contrast: #ffffff;
+	--code-bg: #f1f5f9;       /* slate-100 */
+	--code-fg: #0f172a;
+	--shadow: 0 10px 30px rgba(2, 6, 23, 0.08);
+	--radius: 12px;
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--bg: #0b1220;          /* deep slate */
+		--panel: #0f172a;       /* slate-900 */
+		--fg: #e5e7eb;          /* gray-200 */
+		--muted: #94a3b8;       /* slate-400 */
+		--border: #1f2937;      /* slate-800 */
+		--accent: #60a5fa;      /* blue-400 */
+		--accent-contrast: #0b1220;
+		--code-bg: #0b1220;     /* deep slate */
+		--code-fg: #e5e7eb;
+		--shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+	}
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+	height: 100%;
+}
+
+body {
+	margin: 0;
+	background: var(--bg);
+	color: var(--fg);
+	font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Noto Sans, Ubuntu, Cantarell, Helvetica Neue, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+	line-height: 1.5;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* Header */
+header {
+	padding: 2rem 1rem 1rem;
+}
+
+header h1 {
+	margin: 0 auto;
+	max-width: 1200px;
+	font-size: clamp(1.25rem, 2.2vw + 0.6rem, 2rem);
+	line-height: 1.2;
+}
+
+/* Main layout */
+main {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 0 1rem 3rem;
+	display: grid;
+	gap: 1.25rem;
+}
+
+/* README/Documentation panel */
+.readme {
+	background: var(--panel);
+	border: 1px solid var(--border);
+	border-radius: var(--radius);
+	box-shadow: var(--shadow);
+	padding: 1.25rem;
+    height: 300px;
+    overflow-y: scroll;
+}
+
+/* Demo buttons row */
+.demos {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5rem;
+	align-items: center;
+	justify-content: center;
+	padding: 0.5rem;
+}
+
+.demo {
+	appearance: none;
+	border: 1px solid var(--border);
+	background: var(--panel);
+	color: var(--fg);
+	padding: 0.625rem 0.9rem;
+	border-radius: 10px;
+	font-size: 0.95rem;
+	cursor: pointer;
+	transition: transform .06s ease, background .2s ease, border-color .2s ease, box-shadow .2s ease;
+	box-shadow: 0 1px 0 rgba(0,0,0,.02);
+}
+
+.demo:hover { border-color: color-mix(in srgb, var(--accent) 30%, var(--border)); }
+.demo:active { transform: translateY(1px); }
+.demo:focus-visible {
+	outline: 2px solid color-mix(in srgb, var(--accent) 65%, transparent);
+	outline-offset: 2px;
+}
+.demo.active {
+	background: color-mix(in srgb, var(--accent) 10%, var(--panel));
+	border-color: color-mix(in srgb, var(--accent) 50%, var(--border));
+	box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 20%, transparent);
+}
+
+/* Converter layout: editor (left) + output (right) */
+.converter {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 1rem;
+}
+
+.editor, .output {
+	background: var(--panel);
+	border: 1px solid var(--border);
+	border-radius: var(--radius);
+	box-shadow: var(--shadow);
+	min-height: 420px;
+	overflow: hidden;
+}
+
+.editor {
+	display: flex;
+	flex-direction: column;
+}
+
+.controls {
+	position: sticky;
+	top: 0;
+	z-index: 2;
+	display: flex;
+	gap: 0.5rem;
+	align-items: center;
+	padding: 0.6rem;
+	background: var(--panel);
+	border-bottom: 1px solid var(--border);
+}
+
+.controls button {
+	appearance: none;
+	border-radius: 10px;
+	font-size: 0.9rem;
+	line-height: 1;
+	padding: 0.55rem 0.8rem;
+	cursor: pointer;
+	border: 1px solid var(--border);
+	background: color-mix(in srgb, var(--panel) 90%, var(--bg));
+	color: var(--fg);
+	transition: background .2s ease, border-color .2s ease, transform .06s ease, box-shadow .2s ease;
+}
+
+.controls button:hover {
+	border-color: color-mix(in srgb, var(--accent) 30%, var(--border));
+}
+
+.controls button:focus-visible {
+	outline: 2px solid color-mix(in srgb, var(--accent) 60%, transparent);
+	outline-offset: 2px;
+}
+
+/* Visual labels for empty control buttons (can be replaced by innerText in JS) */
+.controls .clear::before { content: "⟲ Clear"; }
+.controls .run::before { content: "▶ Run"; }
+
+/* Primary style for Run button */
+.controls .run {
+	background: var(--accent);
+	color: var(--accent-contrast);
+	border-color: color-mix(in srgb, var(--accent) 70%, var(--border));
+	box-shadow: 0 1px 0 rgba(0,0,0,.05), 0 0 0 2px color-mix(in srgb, var(--accent) 20%, transparent) inset;
+}
+.controls .run:hover {
+	background: color-mix(in srgb, var(--accent) 85%, white);
+}
+.controls .run:active { transform: translateY(1px); }
+
+/* Ghost/destructive hint for Clear button */
+.controls .clear {
+	background: color-mix(in srgb, var(--panel) 92%, var(--bg));
+}
+
+/* Text editor */
+.input {
+	width: 100%;
+	flex: 1 1 auto;
+	border: 0;
+	outline: none;
+	background: var(--code-bg);
+	color: var(--code-fg);
+	padding: 1rem 1.1rem;
+	font: 500 0.95rem/1.6 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+	resize: vertical;
+}
+
+.input::placeholder { color: color-mix(in srgb, var(--muted) 60%, transparent); }
+
+/* Output preview */
+.output {
+	padding: 1rem 1.1rem;
+	overflow: auto;
+}
+
+/* Markdown-friendly typography inside README and Output */
+.readme, .output {
+	--md-heading: 1.15em;
+}
+
+.readme h1, .output h1 { font-size: 1.6rem; margin: 0.2rem 0 0.8rem; }
+.readme h2, .output h2 { font-size: 1.35rem; margin: 1.2rem 0 0.6rem; }
+.readme h3, .output h3 { font-size: 1.15rem; margin: 1rem 0 0.5rem; }
+.readme h4, .output h4 { font-size: 1rem; margin: 0.9rem 0 0.4rem; }
+
+.readme p, .output p { margin: 0.4rem 0 0.9rem; }
+
+.readme ul, .readme ol, .output ul, .output ol { padding-left: 1.2rem; margin: 0.4rem 0 1rem; }
+.readme li + li, .output li + li { margin-top: 0.25rem; }
+
+.readme blockquote, .output blockquote {
+	margin: 1rem 0;
+	padding: 0.6rem 0.9rem;
+	border-left: 4px solid color-mix(in srgb, var(--accent) 50%, var(--border));
+	background: color-mix(in srgb, var(--panel) 88%, var(--bg));
+	border-radius: 0 8px 8px 0;
+}
+
+.readme code, .output code {
+	background: color-mix(in srgb, var(--code-bg) 80%, var(--panel));
+	color: var(--code-fg);
+	padding: 0.1rem 0.35rem;
+	border-radius: 6px;
+	font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+.readme pre, .output pre {
+	background: var(--code-bg);
+	color: var(--code-fg);
+	border: 1px solid var(--border);
+	border-radius: 10px;
+	padding: 0.9rem 1rem;
+	overflow: auto;
+}
+
+.readme table, .output table {
+	width: 100%;
+	border-collapse: collapse;
+	margin: 0.8rem 0 1.2rem;
+	border: 1px solid var(--border);
+}
+
+.readme th, .readme td, .output th, .output td {
+	border: 1px solid var(--border);
+	padding: 0.55rem 0.6rem;
+	text-align: left;
+}
+
+.readme thead th, .output thead th {
+	background: color-mix(in srgb, var(--panel) 85%, var(--bg));
+}
+
+.readme hr, .output hr {
+	border: none;
+	border-top: 1px solid var(--border);
+	margin: 1.2rem 0;
+}
+
+.readme img, .output img {
+	max-width: 100%;
+	height: auto;
+	border-radius: 8px;
+}
+
+/* Subtle scrollbars */
+.editor *::-webkit-scrollbar, .output::-webkit-scrollbar { width: 10px; height: 10px; }
+.editor *::-webkit-scrollbar-thumb, .output::-webkit-scrollbar-thumb {
+	background: color-mix(in srgb, var(--muted) 25%, transparent);
+	border-radius: 999px;
+}
+.editor *::-webkit-scrollbar-track, .output::-webkit-scrollbar-track { background: transparent; }
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+	.converter { grid-template-columns: 1fr; }
+	.editor, .output { min-height: 360px; }
+}
+
+@media (max-width: 600px) {
+	.demo { flex: 1 1 auto; }
+	.controls { gap: 0.4rem; padding: 0.5rem; }
+	.controls button { padding: 0.5rem 0.7rem; font-size: 0.9rem; }
+}
+

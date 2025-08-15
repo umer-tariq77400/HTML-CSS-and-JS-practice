@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Markdown to HTML converter</title>
+</head>
+
+<body>
+    <header>
+        <h1>Welcome to Markdown to HTML converter</h1>
+    </header>
+
+    <main>
+        <section class="readme">
+            <!-- I will populate it with the documetation in README.md file using marked -->
+        </section>
+
+        <section class="container">
+            <div class="demos">
+                <button class="demo">intro</button>
+                <button class="demo">lists-and-quotes</button>
+                <button class="demo">table-and-images</button>
+                <button class="demo">demo-blog-post</button>
+                <button class="demo">advanced-syntax</button>
+            </div>
+            
+            <div class="converter">
+                <div class="editor">
+                    <div class="controls">
+                        <button class="clear"></button>
+                        <button class="run"></button>
+                    </div>
+                    <textarea class="input"></textarea>
+                </div>
+                <div class="output"></div>
+            </div>
+        </section>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/marked/lib/marked.umd.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
