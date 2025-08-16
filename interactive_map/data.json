@@ -1,0 +1,182 @@
+[
+    {
+        "city": "Karachi",
+        "population": 18868021,
+        "area": 591,
+        "gdp": 164000000,
+        "language": "Urdu",
+        "description": "Karachi is the largest city and economic hub of Pakistan, located on the Arabian Sea coast.",
+        "coordinates": {
+            "latitude": 24.8607,
+            "longitude": 67.0011
+        }
+    },
+    {
+        "city": "Lahore",
+        "population": 13004135,
+        "area": 1772,
+        "gdp": 85000000,
+        "language": "Punjabi",
+        "description": "Lahore is the capital of Punjab province, known for its vibrant culture and historical sites.",
+        "coordinates": {
+            "latitude": 31.5497,
+            "longitude": 74.3436
+        }
+    },
+    {
+        "city": "Faisalabad",
+        "population": 3691999,
+        "area": 1230,
+        "gdp": 25000000,
+        "language": "Punjabi",
+        "description": "Faisalabad is a major industrial city in Punjab, famous for its textile industry.",
+        "coordinates": {
+            "latitude": 31.4181,
+            "longitude": 73.0776
+        }
+    },
+    {
+        "city": "Rawalpindi",
+        "population": 3357612,
+        "area": 259,
+        "gdp": 10000000,
+        "language": "Punjabi",
+        "description": "Rawalpindi is adjacent to Islamabad and is known for its military headquarters and bustling bazaars.",
+        "coordinates": {
+            "latitude": 33.6007,
+            "longitude": 73.0672
+        }
+    },
+    {
+        "city": "Gujranwala",
+        "population": 2511118,
+        "area": 230,
+        "gdp": 8000000,
+        "language": "Punjabi",
+        "description": "Gujranwala is an industrial city in Punjab, known for its manufacturing and agriculture.",
+        "coordinates": {
+            "latitude": 32.1877,
+            "longitude": 74.1945
+        }
+    },
+    {
+        "city": "Multan",
+        "population": 2215381,
+        "area": 133,
+        "gdp": 7000000,
+        "language": "Saraiki",
+        "description": "Multan is one of the oldest cities in South Asia, famous for its shrines and bazaars.",
+        "coordinates": {
+            "latitude": 30.1575,
+            "longitude": 71.5249
+        }
+    },
+    {
+        "city": "Hyderabad",
+        "population": 1921275,
+        "area": 319,
+        "gdp": 6000000,
+        "language": "Sindhi",
+        "description": "Hyderabad is a major city in Sindh province, known for its history and culture.",
+        "coordinates": {
+            "latitude": 25.3960,
+            "longitude": 68.3578
+        }
+    },
+    {
+        "city": "Peshawar",
+        "population": 1905975,
+        "area": 215,
+        "gdp": 5500000,
+        "language": "Pashto",
+        "description": "Peshawar is the capital of Khyber Pakhtunkhwa, rich in history and a gateway to the tribal areas.",
+        "coordinates": {
+            "latitude": 34.0151,
+            "longitude": 71.5249
+        }
+    },
+    {
+        "city": "Quetta",
+        "population": 1565546,
+        "area": 2653,
+        "gdp": 4000000,
+        "language": "Balochi",
+        "description": "Quetta is the capital of Balochistan, surrounded by mountains and known for its fruit orchards.",
+        "coordinates": {
+            "latitude": 30.1798,
+            "longitude": 66.9750
+        }
+    },
+    {
+        "city": "Islamabad",
+        "population": 1108872,
+        "area": 906,
+        "gdp": 31000000,
+        "language": "Urdu",
+        "description": "Islamabad is the capital city of Pakistan, known for its modern architecture and greenery.",
+        "coordinates": {
+            "latitude": 33.6844,
+            "longitude": 73.0479
+        }
+    },
+    {
+        "city": "Sargodha",
+        "population": 975886,
+        "area": 584,
+        "gdp": 3000000,
+        "language": "Punjabi",
+        "description": "Sargodha is an agricultural city in Punjab, famous for citrus production.",
+        "coordinates": {
+            "latitude": 32.0836,
+            "longitude": 72.6711
+        }
+    },
+    {
+        "city": "Sialkot",
+        "population": 911817,
+        "area": 19,
+        "gdp": 4000000,
+        "language": "Punjabi",
+        "description": "Sialkot is renowned for its sports goods and surgical instruments industry.",
+        "coordinates": {
+            "latitude": 32.4945,
+            "longitude": 74.5229
+        }
+    },
+    {
+        "city": "Bahawalpur",
+        "population": 903795,
+        "area": 237,
+        "gdp": 3500000,
+        "language": "Saraiki",
+        "description": "Bahawalpur is a city in Punjab, known for its palaces and proximity to the Cholistan Desert.",
+        "coordinates": {
+            "latitude": 29.3956,
+            "longitude": 71.6836
+        }
+    },
+    {
+        "city": "Gujrat",
+        "population": 574240,
+        "area": 39,
+        "gdp": 2000000,
+        "language": "Punjabi",
+        "description": "Gujrat is a city in Punjab, known for its pottery and fan manufacturing.",
+        "coordinates": {
+            "latitude": 32.5736,
+            "longitude": 74.0789
+        }
+    },
+    {
+        "city": "Sukkur",
+        "population": 563851,
+        "area": 516,
+        "gdp": 1800000,
+        "language": "Sindhi",
+        "description": "Sukkur is a city in Sindh, famous for the Sukkur Barrage and its strategic location on the Indus River.",
+        "coordinates": {
+            "latitude": 27.7052,
+            "longitude": 68.8574
+        }
+    }
+]
