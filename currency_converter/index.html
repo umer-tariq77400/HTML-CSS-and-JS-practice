@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Currency Converter - Using currencyapi</title>
+</head>
+<body>
+    <!-- Creating an input sectoin for the user to insert their desired currency and value to exchange -->
+    <header>
+        <nav>
+            <h1>Currency Converter</h1>
+        </nav>
+    </header>
+    <main>
+        <section class="converter">
+            <form id="currency-form">
+                <input type="number" id="amount" placeholder="Amount" required>
+                <select name="base-currency" id="from-currency" required>
+                    <option value="">From Currency</option>
+                    <!-- Will populate it using JSON -->
+                </select>
+                <button id='submitBtn' type="submit">Convert</button>
+            </form>
+            <div id="result">
+                <!-- Search to a specific currency -->
+                <input type="text" id="search" placeholder="Search currency...">
+                <!-- Will display the conversion result here using a table -->
+                <table>
+                    <thead>
+                        <tr>
+                            <th>From</th>
+                            <th>To</th>
+                            <th>Amount</th>
+                            <th>Converted Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Conversion results will be populated here -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

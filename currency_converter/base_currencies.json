@@ -1,0 +1,22 @@
+[
+    { "Currency": "US Dollar", "Code": "USD" },
+    { "Currency": "Euro", "Code": "EUR" },
+    { "Currency": "British Pound Sterling", "Code": "GBP" },
+    { "Currency": "Japanese Yen", "Code": "JPY" },
+    { "Currency": "Australian Dollar", "Code": "AUD" },
+    { "Currency": "Canadian Dollar", "Code": "CAD" },
+    { "Currency": "Swiss Franc", "Code": "CHF" },
+    { "Currency": "Chinese Yuan", "Code": "CNY" },
+    { "Currency": "Hong Kong Dollar", "Code": "HKD" },
+    { "Currency": "Singapore Dollar", "Code": "SGD" },
+    { "Currency": "New Zealand Dollar", "Code": "NZD" },
+    { "Currency": "Swedish Krona", "Code": "SEK" },
+    { "Currency": "Norwegian Krone", "Code": "NOK" },
+    { "Currency": "Danish Krone", "Code": "DKK" },
+    { "Currency": "Turkish Lira", "Code": "TRY" },
+    { "Currency": "United Arab Emirates Dirham", "Code": "AED" },
+    { "Currency": "Saudi Riyal", "Code": "SAR" },
+    { "Currency": "Indian Rupee", "Code": "INR" },
+    { "Currency": "Pakistani Rupee", "Code": "PKR" },
+    { "Currency": "Russian Ruble", "Code": "RUB" }
+]
