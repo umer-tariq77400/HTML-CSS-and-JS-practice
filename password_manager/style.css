@@ -1,0 +1,105 @@
+:root {
+    --primary-color: #8f3131;
+    --secondary-color: #ab3434;
+    --font-family: Arial, sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+header {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+}
+
+main {
+    padding: 20px;
+}
+
+section {
+    margin-bottom: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 5px;
+}
+
+input {
+    margin-bottom: 10px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    padding: 10px;
+    background-color: var(--secondary-color);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: var(--primary-color);
+}
+
+.password-table {
+    margin-top: 20px;
+    width: 95%;
+}
+
+.password-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.password-table tr {
+    position: relative;
+}
+
+
+.password-table th, .password-table td {
+    position: relative;
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: left;
+}
+
+.password-table th {
+    background-color: #f2f2f2;
+}
+
+.password-table td {
+    cursor: pointer;
+}
+
+.tooltip {
+    position: absolute;
+    right: 10px;
+    display: inline-block;
+    background-color: black;
+    color: white;
+    padding: 5px;
+    border-radius: 4px;
+    font-size: 12px;
+}
+
+.delete {
+    position: absolute;
+    font-size: 30px;
+    right: -25px;
+    top: 3px;
+    cursor: pointer;
+    color: var(--primary-color);
+}
