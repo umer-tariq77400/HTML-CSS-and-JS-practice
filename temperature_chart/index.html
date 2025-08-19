@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temperature Chart</title>
+    <style>
+        nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: aquamarine;
+            border-radius: 15px;
+        }
+
+        #myChart {
+            width: 100%;
+            max-width: 1000px;
+            max-height: 100%;
+            margin: auto;
+            padding: 20px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <h1>Temperature chart - 1 Year data(monthly bases)</h1>
+        </nav>
+    </header>
+
+    <main>
+        <canvas id="myChart"></canvas>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    <script>
+        fetch('temperature.csv')
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok: ' + response.status);
+                }
+                return response.text();
+            })
+            .then((data) => {
+                let parsedData = Papa.parse(data, { header: true, dynamicTyping: true}).data;                let months = [];
+                let temperature = [];
+                let humidity = [];
+                let rainfall = [];
+                for (let entry of parsedData) {
+                    months.push(entry.month);
+                    temperature.push(entry.temperature);
+                    humidity.push(entry.humidity);
+                    rainfall.push(entry.rainfall);
+                }
+                new Chart("myChart", {
+                    type: "line",
+                    data: {
+                        labels: months,
+                        datasets: [
+                            {
+                                label: "Temperature(°C)",
+                                data: temperature,
+                                borderColor: 'red',
+                                fill: false
+                            },
+                            {
+                                label: "Humidity(%)",
+                                data: humidity,
+                                borderColor: 'blue',
+                                fill: false
+                            },
+                            {
+                                label: "Rainfall(mm)",
+                                data: rainfall,
+                                borderColor: 'green',
+                                fill: false
+                            }
+                        ]
+                    }
+                })
+            })
+            .catch((error) => {
+                console.error('Fetch error:', error);
+            });
+
+    </script>
+</body>
+
+</html>
