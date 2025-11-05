@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>X clone - The ultimate Twitter clone</title>
+    <link rel="stylesheet" href="src/output.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <style>
+        /* Hide scrollbars but keep scrolling enabled */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+
+<body class="bg-black w-screen min-h-screen overflow-x-hidden">
+    <div class="flex w-full h-screen max-w-500 m-auto overflow-hidden">
+        <div class="left w-1/10 md:w-1/13 xl:w-1/4 h-screen overflow-y-auto no-scrollbar flex justify-end xl:mr-10">
+            <div class="flex flex-col justify-between w-fit py-5">
+                <div class="flex flex-col mt-3 gap-5 text-2xl">
+                    <div class="invert logo flex justify-center xl:justify-start xl:ml-3">
+                        <svg viewBox="0 0 24 24" aria-hidden="true" class="w-6.5">
+                            <g>
+                                <path
+                                    d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z">
+                                </path>
+                            </g>
+                        </svg>
+                    </div>
+                    <div class="invert flex flex-col gap-3 items-center xl:items-start">
+                        <div class="home flex items-center gap-3 w-fit rounded-full p-2 xl:pl-3 xl:pr-7 hover:bg-gray-200">
+                            <span class="material-symbols-outlined">home</span><span class="hidden xl:block">Home</span>
+                        </div>
+                        <div
+                            class="explore flex items-center gap-3 w-fit rounded-full p-2 xl:pl-3 xl:pr-7 hover:bg-gray-200">
+                            <span class="material-symbols-outlined">Search</span><span
+                                class="hidden xl:block">Explore</span>
+                        </div>
+                        <div
+                            class="notifications flex items-center gap-3 w-fit rounded-full p-2 xl:pl-3 xl:pr-7 hover:bg-gray-200">
+                            <span class="material-symbols-outlined">Notifications</span><span
+                                class="hidden xl:block">Notifications</span>
+                        </div>
+                        <div
+                            class="messages flex items-center gap-3 w-fit rounded-full p-2 xl:pl-3 xl:pr-7 hover:bg-gray-200">
+                            <span class="material-symbols-outlined">chat</span><span
+                                class="hidden xl:block">Messages</span>
+                        </div>
+                        <div class="grok flex items-center gap-3 w-fit rounded-full p-2 xl:pl-3 xl:pr-7 hover:bg-gray-200">
+                            <span class="material-symbols-outlined">smart_toy</span><span
+                                class="hidden xl:block">Grok</span>
+                        </div>
+                        <div class="lists flex items-center gap-3 w-fit rounded-full p-2 xl:pl-3 xl:pr-7 hover:bg-gray-200">
+                            <span class="material-symbols-outlined">list</span><span
+                                class="hidden xl:block">Lists</span>
+                        </div>
+                        <div
+                            class="bookmarks flex items-center gap-3 w-fit rounded-full p-2 xl:pl-3 xl:pr-7 hover:bg-gray-200">
+                            <span class="material-symbols-outlined">bookmark</span><span
+                                class="hidden xl:block">Bookmarks</span>
+                        </div>
+                        <div class="jobs flex items-center gap-3 w-fit rounded-full p-2 xl:pl-3 xl:pr-7 hover:bg-gray-200">
+                            <span class="material-symbols-outlined">work</span><span class="hidden xl:block">Jobs</span>
+                        </div>
+                        <div
+                            class="communities flex items-center gap-3 w-fit rounded-full p-2 xl:pl-3 xl:pr-7 hover:bg-gray-200">
+                            <span class="material-symbols-outlined">groups</span><span
+                                class="hidden xl:block">Communities</span>
+                        </div>
+                        <div
+                            class="premium flex items-center gap-3 w-fit rounded-full p-2 xl:pl-3 xl:pr-7 hover:bg-gray-200">
+                            <span class="material-symbols-outlined">star</span><span
+                                class="hidden xl:block">Premium</span>
+                        </div>
+                        <div
+                            class="verifiedOrgs flex items-center gap-3 w-fit rounded-full p-2 xl:pl-3 xl:pr-7 hover:bg-gray-200">
+                            <span class="material-symbols-outlined">verified</span><span
+                                class="hidden xl:block">Verified Orgs</span>
+                        </div>
+                        <div
+                            class="profile flex items-center gap-3 w-fit rounded-full p-2 xl:pl-3 xl:pr-7 hover:bg-gray-200">
+                            <span class="material-symbols-outlined">person</span><span
+                                class="hidden xl:block">Profile</span>
+                        </div>
+                        <div class="more flex items-center gap-3 w-fit rounded-full p-2 xl:pl-3 xl:pr-7 hover:bg-gray-200">
+                            <span class="material-symbols-outlined">more_horiz</span><span
+                                class="hidden xl:block">More</span>
+                        </div>
+                    </div>
+                    <div class="post flex justify-center ml-3 bg-white text-black py-2 px-3 rounded-full w-fit xl:w-[90%]">
+                        <span class="hidden xl:block">Post</span>
+                        <div class="block xl:hidden"><span class="material-symbols-outlined">history_edu</span></div>
+                    </div>
+                </div>
+                <div class="account flex justify-between items-center p-3 rounded-full gap-10 hover:bg-gray-400">
+                    <div class="flex gap-3">
+                        <div><img class="rounded-full w-12 xl:w-10" src="images/UmerTariq.jpg" alt="Profile photo"></div>
+                        <div class="text-white hidden xl:block">
+                            <p class="font-bold">Umer Tariq</p>
+                            <p class="text-[#6c7075] text-[15px]">@umertariq981</p>
+                        </div>
+                    </div>
+                    <div class="hidden xl:block"><span class="material-symbols-outlined invert">more_horiz</span></div>
+                </div>
+            </div>
+        </div>
+        <div class="middle h-screen w-[85%] md:w-4/7 xl:w-1/2 border-x-2 border-neutral-800 overflow-y-auto no-scrollbar">
+            <div class="flex border-b-2 border-neutral-800 relative">
+                <div class="text-white w-1/2 h-[60px] flex justify-center items-center hover:bg-neutral-950">For you
+                </div>
+                <div class="text-neutral-500 w-1/2 h-[60px] flex justify-center items-center hover:bg-neutral-950">
+                    Following</div>
+                <div class="w-1/12 rounded-full h-[5px] absolute bottom-0 left-[21%] bg-blue-500"></div>
+            </div>
+            <div class="border-b-2 border-neutral-800">
+                <div class="flex gap-3 p-4">
+                    <img class="rounded-full w-10" src="images/UmerTariq.jpg" alt="Umer Tariq">
+                    <input class="text-neutral-300 text-[20px] outline-none bg-transparent" type="text"
+                        placeholder="What's happening?">
+                </div>
+                <div class="flex justify-between items-center px-5 pb-3">
+                    <div class="flex text-blue-400 ml-15">
+                        <span class="material-symbols-outlined rounded-full p-2.5 hover:bg-blue-500/10 cursor-pointer">
+                            image
+                        </span>
+                        <span class="material-symbols-outlined rounded-full p-2.5 hover:bg-blue-500/10 cursor-pointer">
+                            gif_box
+                        </span>
+                        <span class="material-symbols-outlined rounded-full p-2.5 hover:bg-blue-500/10 cursor-pointer">
+                            smart_toy
+                        </span>
+                        <span class="material-symbols-outlined rounded-full p-2.5 hover:bg-blue-500/10 cursor-pointer">
+                            checklist
+                        </span>
+                        <span class="material-symbols-outlined rounded-full p-2.5 hover:bg-blue-500/10 cursor-pointer">
+                            mood
+                        </span>
+                        <span class="material-symbols-outlined rounded-full p-2.5 hover:bg-blue-500/10 cursor-pointer">
+                            calendar_clock
+                        </span>
+                        <span class="material-symbols-outlined rounded-full p-2.5 hover:bg-blue-500/10 cursor-pointer">
+                            location_on
+                        </span>
+                    </div>
+                    <div><button class="bg-neutral-400 text-black rounded-full py-2 px-5 w-fit">Post</button></div>
+                </div>
+            </div>
+            <div
+                class="flex justify-center items-center border-b-2 border-neutral-800 text-blue-400 h-12 hover:bg-neutral-950">
+                Show 70 posts</div>
+            <div class="post p-4 flex items-start gap-3 border-b-2 border-neutral-800 cursor-pointer">
+                <div><img class="rounded-full w-10" src="/images/elonMusk.jpg" alt="Person 1"></div>
+                <div class="w-[90%]">
+                    <div class="flex justify-between">
+                        <div class="text-white">Elon Musk <span class="text-neutral-500">@elonmusk · Sep 2</span>
+                        </div>
+                        <div class="flex gap-5">
+                            <span class="material-symbols-outlined text-neutral-500 w-[10px]">smart_toy</span>
+                            <span class="material-symbols-outlined text-neutral-500 w-[10px]">more_horiz</span>
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-4">
+                        <div class="text-neutral-200">
+                            <p>Hello my name is Umer and this is my first post on X clone made by me.</p>
+                            <p>I'm excited to share my thoughts and ideas with you all!</p>
+                        </div>
+                        <div><img class="w-full rounded-2xl" src="images/webDevelopment.jpg" alt="Web development">
+                        </div>
+                        <div class="flex justify-between text-neutral-500">
+                            <div
+                                class="hover:text-blue-400 py-1 px-2 rounded-full hover:bg-blue-300/10 flex items-center gap-1">
+                                <span class="material-symbols-outlined">
+                                    mode_comment
+                                </span><span>650</span>
+                            </div>
+                            <div
+                                class="hover:text-green-600 py-1 px-2 rounded-full hover:bg-green-700/10 flex items-center gap-1">
+                                <span class="material-symbols-outlined">
+                                    repeat
+                                </span><span>23K</span>
+                            </div>
+                            <div
+                                class="hover:text-pink-500 py-1 px-2 rounded-full hover:bg-pink-700/10 flex items-center gap-1">
+                                <span class="material-symbols-outlined">
+                                    favorite
+                                </span><span>180K</span>
+                            </div>
+                            <div
+                                class="hover:text-blue-400 py-1 px-2 rounded-full hover:bg-blue-300/10 flex items-center gap-1">
+                                <span class="material-symbols-outlined">
+                                    bar_chart_4_bars
+                                </span><span>7.7M</span>
+                            </div>
+                            <div>
+                                <span
+                                    class="material-symbols-outlined hover:text-blue-400 p-1 rounded-full hover:bg-blue-300/10">
+                                    bookmark
+                                </span>
+                                <span
+                                    class="material-symbols-outlined hover:text-blue-400 p-1 rounded-full hover:bg-blue-300/10">
+                                    share_windows
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="post p-4 flex items-start gap-3 border-b-2 border-neutral-800 cursor-pointer">
+                <div><img class="rounded-full w-10" src="/images/elonMusk.jpg" alt="Person 1"></div>
+                <div class="w-[90%]">
+                    <div class="flex justify-between">
+                        <div class="text-white">Elon Musk <span class="text-neutral-500">@elonmusk · Sep 2</span>
+                        </div>
+                        <div class="flex gap-5">
+                            <span class="material-symbols-outlined text-neutral-500 w-[10px]">smart_toy</span>
+                            <span class="material-symbols-outlined text-neutral-500 w-[10px]">more_horiz</span>
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-4">
+                        <div class="text-neutral-200">
+                            <p>Hello my name is Umer and this is my first post on X clone made by me.</p>
+                            <p>I'm excited to share my thoughts and ideas with you all!</p>
+                        </div>
+                        <div><img class="w-full rounded-2xl" src="images/webDevelopment.jpg" alt="Web development">
+                        </div>
+                        <div class="flex justify-between text-neutral-500">
+                            <div
+                                class="hover:text-blue-400 py-1 px-2 rounded-full hover:bg-blue-300/10 flex items-center gap-1">
+                                <span class="material-symbols-outlined">
+                                    mode_comment
+                                </span><span>650</span>
+                            </div>
+                            <div
+                                class="hover:text-green-600 py-1 px-2 rounded-full hover:bg-green-700/10 flex items-center gap-1">
+                                <span class="material-symbols-outlined">
+                                    repeat
+                                </span><span>23K</span>
+                            </div>
+                            <div
+                                class="hover:text-pink-500 py-1 px-2 rounded-full hover:bg-pink-700/10 flex items-center gap-1">
+                                <span class="material-symbols-outlined">
+                                    favorite
+                                </span><span>180K</span>
+                            </div>
+                            <div
+                                class="hover:text-blue-400 py-1 px-2 rounded-full hover:bg-blue-300/10 flex items-center gap-1">
+                                <span class="material-symbols-outlined">
+                                    bar_chart_4_bars
+                                </span><span>7.7M</span>
+                            </div>
+                            <div>
+                                <span
+                                    class="material-symbols-outlined hover:text-blue-400 p-1 rounded-full hover:bg-blue-300/10">
+                                    bookmark
+                                </span>
+                                <span
+                                    class="material-symbols-outlined hover:text-blue-400 p-1 rounded-full hover:bg-blue-300/10">
+                                    share_windows
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="post p-4 flex items-start gap-3 border-b-2 border-neutral-800 cursor-pointer">
+                <div><img class="rounded-full w-10" src="/images/elonMusk.jpg" alt="Person 1"></div>
+                <div class="w-[90%]">
+                    <div class="flex justify-between">
+                        <div class="text-white">Elon Musk <span class="text-neutral-500">@elonmusk · Sep 2</span>
+                        </div>
+                        <div class="flex gap-5">
+                            <span class="material-symbols-outlined text-neutral-500 w-[10px]">smart_toy</span>
+                            <span class="material-symbols-outlined text-neutral-500 w-[10px]">more_horiz</span>
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-4">
+                        <div class="text-neutral-200">
+                            <p>Hello my name is Umer and this is my first post on X clone made by me.</p>
+                            <p>I'm excited to share my thoughts and ideas with you all!</p>
+                        </div>
+                        <div><img class="w-full rounded-2xl" src="images/webDevelopment.jpg" alt="Web development">
+                        </div>
+                        <div class="flex justify-between text-neutral-500">
+                            <div
+                                class="hover:text-blue-400 py-1 px-2 rounded-full hover:bg-blue-300/10 flex items-center gap-1">
+                                <span class="material-symbols-outlined">
+                                    mode_comment
+                                </span><span>650</span>
+                            </div>
+                            <div
+                                class="hover:text-green-600 py-1 px-2 rounded-full hover:bg-green-700/10 flex items-center gap-1">
+                                <span class="material-symbols-outlined">
+                                    repeat
+                                </span><span>23K</span>
+                            </div>
+                            <div
+                                class="hover:text-pink-500 py-1 px-2 rounded-full hover:bg-pink-700/10 flex items-center gap-1">
+                                <span class="material-symbols-outlined">
+                                    favorite
+                                </span><span>180K</span>
+                            </div>
+                            <div
+                                class="hover:text-blue-400 py-1 px-2 rounded-full hover:bg-blue-300/10 flex items-center gap-1">
+                                <span class="material-symbols-outlined">
+                                    bar_chart_4_bars
+                                </span><span>7.7M</span>
+                            </div>
+                            <div>
+                                <span
+                                    class="material-symbols-outlined hover:text-blue-400 p-1 rounded-full hover:bg-blue-300/10">
+                                    bookmark
+                                </span>
+                                <span
+                                    class="material-symbols-outlined hover:text-blue-400 p-1 rounded-full hover:bg-blue-300/10">
+                                    share_windows
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="post p-4 flex items-start gap-3 border-b-2 border-neutral-800 cursor-pointer">
+                <div><img class="rounded-full w-10" src="/images/elonMusk.jpg" alt="Person 1"></div>
+                <div class="w-[90%]">
+                    <div class="flex justify-between">
+                        <div class="text-white">Elon Musk <span class="text-neutral-500">@elonmusk · Sep 2</span>
+                        </div>
+                        <div class="flex gap-5">
+                            <span class="material-symbols-outlined text-neutral-500 w-[10px]">smart_toy</span>
+                            <span class="material-symbols-outlined text-neutral-500 w-[10px]">more_horiz</span>
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-4">
+                        <div class="text-neutral-200">
+                            <p>Hello my name is Umer and this is my first post on X clone made by me.</p>
+                            <p>I'm excited to share my thoughts and ideas with you all!</p>
+                        </div>
+                        <div><img class="w-full rounded-2xl" src="images/webDevelopment.jpg" alt="Web development">
+                        </div>
+                        <div class="flex justify-between text-neutral-500">
+                            <div
+                                class="hover:text-blue-400 py-1 px-2 rounded-full hover:bg-blue-300/10 flex items-center gap-1">
+                                <span class="material-symbols-outlined">
+                                    mode_comment
+                                </span><span>650</span>
+                            </div>
+                            <div
+                                class="hover:text-green-600 py-1 px-2 rounded-full hover:bg-green-700/10 flex items-center gap-1">
+                                <span class="material-symbols-outlined">
+                                    repeat
+                                </span><span>23K</span>
+                            </div>
+                            <div
+                                class="hover:text-pink-500 py-1 px-2 rounded-full hover:bg-pink-700/10 flex items-center gap-1">
+                                <span class="material-symbols-outlined">
+                                    favorite
+                                </span><span>180K</span>
+                            </div>
+                            <div
+                                class="hover:text-blue-400 py-1 px-2 rounded-full hover:bg-blue-300/10 flex items-center gap-1">
+                                <span class="material-symbols-outlined">
+                                    bar_chart_4_bars
+                                </span><span>7.7M</span>
+                            </div>
+                            <div>
+                                <span
+                                    class="material-symbols-outlined hover:text-blue-400 p-1 rounded-full hover:bg-blue-300/10">
+                                    bookmark
+                                </span>
+                                <span
+                                    class="material-symbols-outlined hover:text-blue-400 p-1 rounded-full hover:bg-blue-300/10">
+                                    share_windows
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="post p-4 flex items-start gap-3 border-b-2 border-neutral-800 cursor-pointer">
+                <div><img class="rounded-full w-10" src="/images/elonMusk.jpg" alt="Person 1"></div>
+                <div class="w-[90%]">
+                    <div class="flex justify-between">
+                        <div class="text-white">Elon Musk <span class="text-neutral-500">@elonmusk · Sep 2</span>
+                        </div>
+                        <div class="flex gap-5">
+                            <span class="material-symbols-outlined text-neutral-500 w-[10px]">smart_toy</span>
+                            <span class="material-symbols-outlined text-neutral-500 w-[10px]">more_horiz</span>
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-4">
+                        <div class="text-neutral-200">
+                            <p>Hello my name is Umer and this is my first post on X clone made by me.</p>
+                            <p>I'm excited to share my thoughts and ideas with you all!</p>
+                        </div>
+                        <div><img class="w-full rounded-2xl" src="images/webDevelopment.jpg" alt="Web development">
+                        </div>
+                        <div class="flex justify-between text-neutral-500">
+                            <div
+                                class="hover:text-blue-400 py-1 px-2 rounded-full hover:bg-blue-300/10 flex items-center gap-1">
+                                <span class="material-symbols-outlined">
+                                    mode_comment
+                                </span><span>650</span>
+                            </div>
+                            <div
+                                class="hover:text-green-600 py-1 px-2 rounded-full hover:bg-green-700/10 flex items-center gap-1">
+                                <span class="material-symbols-outlined">
+                                    repeat
+                                </span><span>23K</span>
+                            </div>
+                            <div
+                                class="hover:text-pink-500 py-1 px-2 rounded-full hover:bg-pink-700/10 flex items-center gap-1">
+                                <span class="material-symbols-outlined">
+                                    favorite
+                                </span><span>180K</span>
+                            </div>
+                            <div
+                                class="hover:text-blue-400 py-1 px-2 rounded-full hover:bg-blue-300/10 flex items-center gap-1">
+                                <span class="material-symbols-outlined">
+                                    bar_chart_4_bars
+                                </span><span>7.7M</span>
+                            </div>
+                            <div>
+                                <span
+                                    class="material-symbols-outlined hover:text-blue-400 p-1 rounded-full hover:bg-blue-300/10">
+                                    bookmark
+                                </span>
+                                <span
+                                    class="material-symbols-outlined hover:text-blue-400 p-1 rounded-full hover:bg-blue-300/10">
+                                    share_windows
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="post p-4 flex items-start gap-3 border-b-2 border-neutral-800 cursor-pointer">
+                <div><img class="rounded-full w-10" src="/images/elonMusk.jpg" alt="Person 1"></div>
+                <div class="w-[90%]">
+                    <div class="flex justify-between">
+                        <div class="text-white">Elon Musk <span class="text-neutral-500">@elonmusk · Sep 2</span>
+                        </div>
+                        <div class="flex gap-5">
+                            <span class="material-symbols-outlined text-neutral-500 w-[10px]">smart_toy</span>
+                            <span class="material-symbols-outlined text-neutral-500 w-[10px]">more_horiz</span>
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-4">
+                        <div class="text-neutral-200">
+                            <p>Hello my name is Umer and this is my first post on X clone made by me.</p>
+                            <p>I'm excited to share my thoughts and ideas with you all!</p>
+                        </div>
+                        <div><img class="w-full rounded-2xl" src="images/webDevelopment.jpg" alt="Web development">
+                        </div>
+                        <div class="flex justify-between text-neutral-500">
+                            <div
+                                class="hover:text-blue-400 py-1 px-2 rounded-full hover:bg-blue-300/10 flex items-center gap-1">
+                                <span class="material-symbols-outlined">
+                                    mode_comment
+                                </span><span>650</span>
+                            </div>
+                            <div
+                                class="hover:text-green-600 py-1 px-2 rounded-full hover:bg-green-700/10 flex items-center gap-1">
+                                <span class="material-symbols-outlined">
+                                    repeat
+                                </span><span>23K</span>
+                            </div>
+                            <div
+                                class="hover:text-pink-500 py-1 px-2 rounded-full hover:bg-pink-700/10 flex items-center gap-1">
+                                <span class="material-symbols-outlined">
+                                    favorite
+                                </span><span>180K</span>
+                            </div>
+                            <div
+                                class="hover:text-blue-400 py-1 px-2 rounded-full hover:bg-blue-300/10 flex items-center gap-1">
+                                <span class="material-symbols-outlined">
+                                    bar_chart_4_bars
+                                </span><span>7.7M</span>
+                            </div>
+                            <div>
+                                <span
+                                    class="material-symbols-outlined hover:text-blue-400 p-1 rounded-full hover:bg-blue-300/10">
+                                    bookmark
+                                </span>
+                                <span
+                                    class="material-symbols-outlined hover:text-blue-400 p-1 rounded-full hover:bg-blue-300/10">
+                                    share_windows
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="right hidden md:block w-3/8 xl:w-1/4 h-screen overflow-y-auto no-scrollbar">
+            <div class="flex flex-col ml-8 mt-2 w-[70%] gap-4">
+                <div class="search border border-neutral-800 rounded-full p-3 flex items-center gap-3">
+                    <span class="material-symbols-outlined invert">Search</span>
+                    <input class="w-full outline-none bg-transparent text-white" type="text" placeholder="Search">
+                </div>
+                <div class="border border-neutral-800 rounded-2xl py-3 px-4 flex flex-col gap-3">
+                    <p class="text-white text-2xl font-bold">Subscribe to Premium</p>
+                    <p class="text-white">Subscribe to unlock new features and if eligible, receive a share of revenue.
+                    </p>
+                    <button class="bg-blue-500 text-white rounded-full py-2 px-4 w-fit">Subscribe</button>
+                </div>
+                <div class="border border-neutral-800 rounded-2xl flex flex-col">
+                    <div class="flex justify-between items-center py-3 px-4">
+                        <div class="text-white font-bold text-2xl">Today’s News</div>
+                        <span
+                            class="material-symbols-outlined invert hover:bg-neutral-200 rounded-full cursor-pointer pt-2 pr-[4px] pl-[4px] pb-[4px]">close</span>
+                    </div>
+                    <div class="hover:bg-neutral-950 py-3 px-4">
+                        <p class="text-white">Earthquake Devastates Eastern Afghanistan, Killing Over 800</p>
+                        <div class="flex items-center gap-3">
+                            <img class="rounded-full w-6" src="images/person1.jpg" alt="Person 1">
+                            <span class="text-neutral-500">19 hours ago · News · 36.4K posts</span>
+                        </div>
+                    </div>
+                    <div class="hover:bg-neutral-950 py-3 px-4">
+                        <p class="text-white">Earthquake Devastates Eastern Afghanistan, Killing Over 800</p>
+                        <div class="flex items-center gap-3">
+                            <img class="rounded-full w-6" src="images/person1.jpg" alt="Person 1">
+                            <span class="text-neutral-500">19 hours ago · News · 36.4K posts</span>
+                        </div>
+                    </div>
+                    <div class="hover:bg-neutral-950 py-3 px-4 rounded-b-2xl">
+                        <p class="text-white">Earthquake Devastates Eastern Afghanistan, Killing Over 800</p>
+                        <div class="flex items-center gap-3">
+                            <img class="rounded-full w-6" src="images/person1.jpg" alt="Person 1">
+                            <span class="text-neutral-500">19 hours ago · News · 36.4K posts</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="border border-neutral-800 rounded-2xl flex flex-col">
+                    <p class="text-white font-bold text-2xl py-3 px-4">What’s happening</p>
+                    <div class="hover:bg-neutral-950 py-3 px-4">
+                        <div class="flex justify-between">
+                            <span class="text-neutral-500">Trending in Pakistan</span>
+                            <span class="material-symbols-outlined invert">more_horiz</span>
+                        </div>
+                        <div class="font-bold text-white text-right">#معافی_مانگتی_خان_کی_جتی</div>
+                    </div>
+                    <div class="hover:bg-neutral-950 py-3 px-4">
+                        <div class="flex justify-between">
+                            <span class="text-neutral-500">Only on X · Trending</span>
+                            <span class="material-symbols-outlined invert">more_horiz</span>
+                        </div>
+                        <div class="font-bold text-white text-right">#ساتویں_محفل_میلاد</div>
+                    </div>
+                    <div class="hover:bg-neutral-950 py-3 px-4">
+                        <div class="flex justify-between">
+                            <span class="text-neutral-500">Trending in Pakistan</span>
+                            <span class="material-symbols-outlined invert">more_horiz</span>
+                        </div>
+                        <div class="font-bold text-white">#sindhfloods</div>
+                    </div>
+                    <div class="hover:bg-neutral-950 py-3 px-4">
+                        <div class="flex justify-between">
+                            <span class="text-neutral-500">Trending in Pakistan</span>
+                            <span class="material-symbols-outlined invert">more_horiz</span>
+                        </div>
+                        <div class="font-bold text-white">#GovHouseSindh</div>
+                    </div>
+                    <div class="hover:bg-neutral-950 rounded-b-2xl py-3 px-4">
+                        <p class="text-blue-500">Show more</p>
+                    </div>
+                </div>
+                <div class="border border-neutral-800 rounded-2xl flex flex-col">
+                    <p class="text-white font-bold text-2xl py-3 px-4">Who to Follow</p>
+                    <div class="flex justify-between items-center py-3 px-4 hover:bg-neutral-950 cursor-pointer">
+                        <div class="flex justify-between items-center gap-3">
+                            <div><img class="rounded-full w-10" src="images/bitcoin.jpg" alt="Bitcoin Image"></div>
+                            <div>
+                                <div class="text-white font-bold">Bitcoin</div>
+                                <div class="text-white">@Bitcoin</div>
+                            </div>
+                        </div>
+                        <div><button class="bg-white text-black rounded-full py-1 px-3 cursor-pointer">Follow</button>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-center py-3 px-4 hover:bg-neutral-950 cursor-pointer">
+                        <div class="flex justify-between items-center gap-3">
+                            <div><img class="rounded-full w-10" src="images/bitcoin.jpg" alt="Bitcoin Image"></div>
+                            <div>
+                                <div class="text-white font-bold">Bitcoin</div>
+                                <div class="text-white">@Bitcoin</div>
+                            </div>
+                        </div>
+                        <div><button class="bg-white text-black rounded-full py-1 px-3 cursor-pointer">Follow</button>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-center py-3 px-4 hover:bg-neutral-950 cursor-pointer">
+                        <div class="flex justify-between items-center gap-3">
+                            <div><img class="rounded-full w-10" src="images/bitcoin.jpg" alt="Bitcoin Image"></div>
+                            <div>
+                                <div class="text-white font-bold">Bitcoin</div>
+                                <div class="text-white">@Bitcoin</div>
+                            </div>
+                        </div>
+                        <div><button class="bg-white text-black rounded-full py-1 px-3 cursor-pointer">Follow</button>
+                        </div>
+                    </div>
+                    <div class="hover:bg-neutral-950 rounded-b-2xl py-3 px-4">
+                        <p class="text-blue-500">Show more</p>
+                    </div>
+                </div>
+                <div class="text-neutral-600">Terms of Service
+                    |
+                    Privacy Policy
+                    |
+                    Cookie Policy
+                    |
+                    Accessibility
+                    |
+                    Ads info
+                    |
+
+                    More
+                    © 2025 X Corp.</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Delta-based scroll syncing: same speed, not same position
+        (function () {
+            const middle = document.querySelector('.middle');
+            const left = document.querySelector('.left');
+            const right = document.querySelector('.right');
+            if (!middle || !left || !right) return;
+
+            const els = { middle, left, right };
+            const last = {
+                middle: middle.scrollTop,
+                left: left.scrollTop,
+                right: right.scrollTop
+            };
+
+            let syncing = false;
+
+            function applyDelta(sourceKey, delta) {
+                for (const [key, el] of Object.entries(els)) {
+                    if (key === sourceKey) continue;
+                    el.scrollTop = el.scrollTop + delta; // clamps automatically
+                    last[key] = el.scrollTop; // keep 'last' in sync to avoid jumps
+                }
+            }
+
+            function bind(key) {
+                const el = els[key];
+                el.addEventListener('scroll', () => {
+                    if (syncing) return;
+                    syncing = true;
+
+                    const current = el.scrollTop;
+                    const delta = current - last[key];
+                    if (delta !== 0) {
+                        applyDelta(key, delta);
+                        last[key] = current;
+                    }
+
+                    syncing = false;
+                }, { passive: true });
+            }
+
+            bind('middle');
+            bind('left');
+            bind('right');
+        })();
+    </script>
+</body>
+
+</html>
