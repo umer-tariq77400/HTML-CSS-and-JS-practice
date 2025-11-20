@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Interactive Pendulum Simulation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            overflow: hidden;
+            touch-action: none; /* Critical for mobile drag interaction */
+        }
+        /* Custom slider styling */
+        input[type=range] {
+            -webkit-appearance: none;
+            width: 100%;
+            background: transparent;
+        }
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 16px;
+            width: 16px;
+            border-radius: 50%;
+            background: #3b82f6;
+            margin-top: -6px;
+            cursor: pointer;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+        }
+        input[type=range]::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 4px;
+            cursor: pointer;
+            background: #e2e8f0;
+            border-radius: 2px;
+        }
+        input[type=range]:focus {
+            outline: none;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 h-[100dvh] flex flex-col lg:flex-row">
+
+    <!-- Canvas Container -->
+    <!-- Adjusted flex behavior for better mobile split -->
+    <div class="relative flex-grow h-[55%] lg:h-auto bg-white shadow-inner overflow-hidden cursor-grab active:cursor-grabbing" id="canvas-container">
+        <canvas id="simCanvas" class="block w-full h-full"></canvas>
+        
+        <!-- Overlay Info -->
+        <div class="absolute top-4 left-4 bg-white/90 backdrop-blur-sm p-3 rounded-xl shadow-sm border border-slate-100 text-xs sm:text-sm text-slate-600 pointer-events-none select-none">
+            <div class="font-mono space-y-1">
+                <p>Angle: <span id="info-angle" class="font-bold text-slate-800">0°</span></p>
+                <p>Velocity: <span id="info-vel" class="font-bold text-slate-800">0.0</span> rad/s</p>
+                <p>Period: <span id="info-period" class="font-bold text-slate-800">0.0</span> s</p>
+            </div>
+        </div>
+
+        <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 text-slate-400 text-[10px] sm:text-xs pointer-events-none whitespace-nowrap">
+            Drag bob to start • Pinch/Scroll safe
+        </div>
+    </div>
+
+    <!-- Controls Panel -->
+    <div class="w-full lg:w-96 h-[45%] lg:h-auto bg-slate-50 border-t lg:border-t-0 lg:border-l border-slate-200 p-4 sm:p-6 flex flex-col gap-4 sm:gap-6 overflow-y-auto z-10 shadow-lg">
+        
+        <div class="flex items-center justify-between shrink-0">
+            <h1 class="text-lg sm:text-xl font-bold text-slate-800"><i class="fas fa-stopwatch mr-2 text-blue-500"></i>Pendulum</h1>
+            <div class="flex gap-2">
+                <button id="btn-reset" class="p-2 rounded-lg hover:bg-slate-200 text-slate-600 transition-colors" title="Reset">
+                    <i class="fas fa-undo"></i>
+                </button>
+                <button id="btn-play" class="px-3 sm:px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium transition-colors shadow-sm flex items-center gap-2 text-sm sm:text-base">
+                    <i class="fas fa-pause" id="icon-play"></i> <span id="text-play">Pause</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="space-y-4 sm:space-y-5 pb-4">
+            <!-- Length Control -->
+            <div class="bg-white p-3 sm:p-4 rounded-xl border border-slate-200 shadow-sm">
+                <div class="flex justify-between mb-2">
+                    <label class="text-xs sm:text-sm font-semibold text-slate-700">Length (L)</label>
+                    <span id="val-length" class="text-[10px] sm:text-xs font-mono text-blue-600 bg-blue-50 px-2 py-0.5 rounded">1.50 m</span>
+                </div>
+                <input type="range" id="inp-length" min="0.5" max="3.0" step="0.1" value="1.5">
+            </div>
+
+            <!-- Gravity Control -->
+            <div class="bg-white p-3 sm:p-4 rounded-xl border border-slate-200 shadow-sm">
+                <div class="flex justify-between mb-2">
+                    <label class="text-xs sm:text-sm font-semibold text-slate-700">Gravity (g)</label>
+                    <span id="val-gravity" class="text-[10px] sm:text-xs font-mono text-blue-600 bg-blue-50 px-2 py-0.5 rounded">9.81 m/s²</span>
+                </div>
+                <input type="range" id="inp-gravity" min="1.6" max="25.0" step="0.1" value="9.81">
+                <div class="flex justify-between mt-1 text-[9px] sm:text-[10px] text-slate-400 uppercase tracking-wider">
+                    <span>Moon</span>
+                    <span>Earth</span>
+                    <span>Jupiter</span>
+                </div>
+            </div>
+
+            <!-- Damping Control -->
+            <div class="bg-white p-3 sm:p-4 rounded-xl border border-slate-200 shadow-sm">
+                <div class="flex justify-between mb-2">
+                    <label class="text-xs sm:text-sm font-semibold text-slate-700">Air Resistance</label>
+                    <span id="val-damping" class="text-[10px] sm:text-xs font-mono text-blue-600 bg-blue-50 px-2 py-0.5 rounded">1.0 %</span>
+                </div>
+                <!-- Increased max from 0.05 to 0.80 for stronger effect -->
+                <input type="range" id="inp-damping" min="0" max="0.8" step="0.01" value="0.05">
+            </div>
+
+            <!-- Mass Control -->
+            <div class="bg-white p-3 sm:p-4 rounded-xl border border-slate-200 shadow-sm">
+                <div class="flex justify-between mb-2">
+                    <label class="text-xs sm:text-sm font-semibold text-slate-700">Bob Mass</label>
+                    <span id="val-mass" class="text-[10px] sm:text-xs font-mono text-blue-600 bg-blue-50 px-2 py-0.5 rounded">10 kg</span>
+                </div>
+                <input type="range" id="inp-mass" min="5" max="30" step="1" value="10">
+            </div>
+
+             <!-- Toggle Trace -->
+             <div class="flex items-center justify-between bg-white p-3 sm:p-4 rounded-xl border border-slate-200 shadow-sm cursor-pointer" onclick="document.getElementById('chk-trace').click()">
+                <label class="text-xs sm:text-sm font-semibold text-slate-700 cursor-pointer">Show Path Trace</label>
+                <input type="checkbox" id="chk-trace" class="w-5 h-5 text-blue-600 rounded focus:ring-blue-500 border-gray-300">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        /**
+         * Simple Pendulum Simulation
+         * Physics Logic: Semi-Implicit Euler Integration
+         */
+
+        // --- Configuration & State ---
+        const canvas = document.getElementById('simCanvas');
+        const ctx = canvas.getContext('2d');
+        const container = document.getElementById('canvas-container');
+
+        // Physics Constants
+        let lengthM = 1.5;    // Length in meters
+        let gravity = 9.81;   // Gravity in m/s^2
+        let mass = 10;        // Mass (purely visual size scaling in simple pendulum eq)
+        let damping = 0.01;   // Damping coefficient
+        
+        // Simulation State
+        let angle = Math.PI / 4; // Initial angle (45 deg)
+        let velocity = 0;        // Angular velocity
+        let acceleration = 0;    // Angular acceleration
+        let isDragging = false;
+        let isPaused = false;
+        
+        // Visual scaling
+        let METER_TO_PX = 150; // Now dynamic
+        let originX = 0;
+        let originY = 0;
+        
+        // Trail/Trace
+        let tracePoints = [];
+        const MAX_TRACE_POINTS = 300;
+        let showTrace = false;
+
+        // --- DOM Elements ---
+        const els = {
+            len: document.getElementById('inp-length'),
+            grav: document.getElementById('inp-gravity'),
+            damp: document.getElementById('inp-damping'),
+            mass: document.getElementById('inp-mass'),
+            trace: document.getElementById('chk-trace'),
+            
+            valLen: document.getElementById('val-length'),
+            valGrav: document.getElementById('val-gravity'),
+            valDamp: document.getElementById('val-damping'),
+            valMass: document.getElementById('val-mass'),
+            
+            infoAngle: document.getElementById('info-angle'),
+            infoVel: document.getElementById('info-vel'),
+            infoPeriod: document.getElementById('info-period'),
+            
+            btnPlay: document.getElementById('btn-play'),
+            iconPlay: document.getElementById('icon-play'),
+            textPlay: document.getElementById('text-play'),
+            btnReset: document.getElementById('btn-reset')
+        };
+
+        // --- Initialization ---
+        function resize() {
+            const dpr = window.devicePixelRatio || 1;
+            
+            // Get CSS size
+            const rect = container.getBoundingClientRect();
+            
+            // Set actual canvas size to match CSS pixels
+            canvas.width = rect.width;
+            canvas.height = rect.height;
+
+            // Pivot Position: Centered horizontally, 15% down or fixed pixel min
+            originX = canvas.width / 2;
+            originY = Math.min(canvas.height * 0.15, 80); 
+
+            // DYNAMIC SCALING: Ensure the pendulum fits on screen
+            // Max length slider is 3.0m. We want 3.0m to fit within available height with padding.
+            const maxPossibleLength = 3.0; 
+            const paddingBottom = 40;
+            const availableHeight = canvas.height - originY - paddingBottom;
+            
+            // If default scale (150px/m) is too big, shrink it.
+            // If screen is huge, cap it so it's not comically large.
+            const idealScale = 150;
+            const maxFitScale = availableHeight / maxPossibleLength;
+            
+            METER_TO_PX = Math.min(idealScale, maxFitScale);
+        }
+        window.addEventListener('resize', resize);
+        
+        // Initial resize
+        setTimeout(resize, 0); 
+
+        // --- Physics Engine ---
+        function updatePhysics() {
+            if (isPaused || isDragging) return;
+
+            // Simple Pendulum Equation of Motion
+            // angular_accel = -(g / L) * sin(theta) - damping * angular_vel
+            
+            acceleration = (-1 * gravity / lengthM) * Math.sin(angle);
+            
+            // Damping applied. 
+            // We divide by mass relative to a baseline (10kg) to simulate inertia.
+            // Heavier objects (mass > 10) lose velocity slower. Lighter objects lose it faster.
+            let inertiaFactor = 10 / mass; 
+            acceleration -= (damping * inertiaFactor) * velocity;
+
+            velocity += acceleration * (1/60); // Assuming 60fps dt
+            angle += velocity * (1/60);
+
+            // Store trace
+            if (showTrace) {
+                const bobX = originX + lengthM * METER_TO_PX * Math.sin(angle);
+                const bobY = originY + lengthM * METER_TO_PX * Math.cos(angle);
+                tracePoints.push({x: bobX, y: bobY});
+                if(tracePoints.length > MAX_TRACE_POINTS) tracePoints.shift();
+            }
+        }
+
+        // --- Rendering ---
+        function draw() {
+            // Clear Canvas
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // 1. Draw Support/Ceiling
+            ctx.strokeStyle = '#94a3b8';
+            ctx.lineWidth = 4;
+            ctx.beginPath();
+            ctx.moveTo(originX - (canvas.width * 0.1), originY); // Dynamic width support
+            ctx.lineTo(originX + (canvas.width * 0.1), originY);
+            ctx.stroke();
+
+            // Draw Pivot
+            ctx.fillStyle = '#475569';
+            ctx.beginPath();
+            ctx.arc(originX, originY, 6, 0, Math.PI * 2);
+            ctx.fill();
+
+            // Calculate Bob Position
+            const ropeLengthPx = lengthM * METER_TO_PX;
+            const bobX = originX + ropeLengthPx * Math.sin(angle);
+            const bobY = originY + ropeLengthPx * Math.cos(angle);
+
+            // 2. Draw Trace (if enabled)
+            if (showTrace && tracePoints.length > 1) {
+                ctx.beginPath();
+                ctx.strokeStyle = 'rgba(59, 130, 246, 0.3)';
+                ctx.lineWidth = 4;
+                ctx.lineCap = 'round';
+                ctx.lineJoin = 'round';
+                
+                ctx.moveTo(tracePoints[0].x, tracePoints[0].y);
+                for(let i=1; i<tracePoints.length; i++) {
+                    ctx.lineTo(tracePoints[i].x, tracePoints[i].y);
+                }
+                ctx.stroke();
+            }
+
+            // 3. Draw String
+            ctx.strokeStyle = '#334155';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.moveTo(originX, originY);
+            ctx.lineTo(bobX, bobY);
+            ctx.stroke();
+
+            // 4. Draw Bob
+            // Scale radius slightly with METER_TO_PX to look good on mobile
+            const scaleRatio = METER_TO_PX / 150; 
+            let bobRadius = (15 + (mass - 5) * 0.8) * Math.max(0.6, scaleRatio); 
+            
+            const grad = ctx.createRadialGradient(bobX - bobRadius/3, bobY - bobRadius/3, bobRadius/4, bobX, bobY, bobRadius);
+            grad.addColorStop(0, '#60a5fa');
+            grad.addColorStop(1, '#2563eb');
+
+            ctx.fillStyle = grad;
+            ctx.beginPath();
+            ctx.arc(bobX, bobY, bobRadius, 0, Math.PI * 2);
+            ctx.fill();
+            
+            // Highlight dragging
+            if(isDragging) {
+                ctx.strokeStyle = 'rgba(59, 130, 246, 0.5)';
+                ctx.lineWidth = 4 * scaleRatio;
+                ctx.stroke();
+                
+                // Draw guideline
+                ctx.setLineDash([5, 5]);
+                ctx.strokeStyle = '#cbd5e1';
+                ctx.lineWidth = 1;
+                ctx.beginPath();
+                ctx.moveTo(originX, originY);
+                ctx.lineTo(originX, originY + ropeLengthPx + 50);
+                ctx.stroke();
+                ctx.setLineDash([]);
+            }
+
+            updateInfoUI();
+        }
+
+        function updateInfoUI() {
+            const angleDeg = (angle * 180 / Math.PI).toFixed(1);
+            const displayAngle = ((parseFloat(angleDeg) + 180) % 360 - 180).toFixed(1);
+            
+            els.infoAngle.innerText = `${displayAngle}°`;
+            els.infoVel.innerText = velocity.toFixed(2);
+            const T = 2 * Math.PI * Math.sqrt(lengthM / gravity);
+            els.infoPeriod.innerText = T.toFixed(2);
+        }
+
+        function loop() {
+            updatePhysics();
+            draw();
+            requestAnimationFrame(loop);
+        }
+
+        // --- Interaction Logic ---
+
+        function getMousePos(evt) {
+            const rect = canvas.getBoundingClientRect();
+            return {
+                x: (evt.clientX || evt.touches[0].clientX) - rect.left,
+                y: (evt.clientY || evt.touches[0].clientY) - rect.top
+            };
+        }
+
+        function startDrag(evt) {
+            const pos = getMousePos(evt);
+            const ropeLengthPx = lengthM * METER_TO_PX;
+            const bobX = originX + ropeLengthPx * Math.sin(angle);
+            const bobY = originY + ropeLengthPx * Math.cos(angle);
+            
+            // Hit test circle (scaled)
+            const scaleRatio = METER_TO_PX / 150; 
+            const hitRadius = 50 * Math.max(0.8, scaleRatio); // Dynamic hit area
+            
+            const dist = Math.hypot(pos.x - bobX, pos.y - bobY);
+            
+            if (dist < hitRadius) { 
+                isDragging = true;
+                container.style.cursor = 'grabbing';
+                velocity = 0; 
+            }
+        }
+
+        function moveDrag(evt) {
+            if (!isDragging) return;
+            
+            const pos = getMousePos(evt);
+            const dx = pos.x - originX;
+            const dy = pos.y - originY;
+            
+            angle = Math.atan2(dx, dy);
+            
+            velocity = 0;
+            acceleration = 0;
+            tracePoints = [];
+        }
+
+        function endDrag() {
+            isDragging = false;
+            container.style.cursor = 'grab';
+        }
+
+        canvas.addEventListener('mousedown', startDrag);
+        window.addEventListener('mousemove', moveDrag);
+        window.addEventListener('mouseup', endDrag);
+
+        canvas.addEventListener('touchstart', (e) => { e.preventDefault(); startDrag(e); }, {passive: false});
+        window.addEventListener('touchmove', (e) => { if(isDragging) e.preventDefault(); moveDrag(e); }, {passive: false});
+        window.addEventListener('touchend', endDrag);
+
+
+        // --- UI Controls Logic ---
+
+        function updateUI() {
+            lengthM = parseFloat(els.len.value);
+            gravity = parseFloat(els.grav.value);
+            damping = parseFloat(els.damp.value);
+            mass = parseFloat(els.mass.value);
+            showTrace = els.trace.checked;
+
+            els.valLen.innerText = lengthM.toFixed(2) + " m";
+            els.valGrav.innerText = gravity.toFixed(2) + " m/s²";
+            els.valDamp.innerText = (damping * 100).toFixed(1) + " %";
+            els.valMass.innerText = mass + " kg";
+
+            if(!showTrace) tracePoints = [];
+            
+            // Re-run resize logic only if we think length changes might push it off screen?
+            // Actually, we scaled based on MAX length (3.0), so changing current length 
+            // shouldn't require a resize calculation, just a redraw.
+        }
+
+        [els.len, els.grav, els.damp, els.mass].forEach(el => {
+            el.addEventListener('input', updateUI);
+        });
+
+        els.trace.addEventListener('change', updateUI);
+
+        els.btnPlay.addEventListener('click', () => {
+            isPaused = !isPaused;
+            if(isPaused) {
+                els.textPlay.innerText = "Resume";
+                els.iconPlay.classList.replace('fa-pause', 'fa-play');
+                els.btnPlay.classList.replace('bg-blue-600', 'bg-green-600');
+                els.btnPlay.classList.replace('hover:bg-blue-700', 'hover:bg-green-700');
+            } else {
+                els.textPlay.innerText = "Pause";
+                els.iconPlay.classList.replace('fa-play', 'fa-pause');
+                els.btnPlay.classList.replace('bg-green-600', 'bg-blue-600');
+                els.btnPlay.classList.replace('hover:bg-green-700', 'hover:bg-blue-700');
+            }
+        });
+
+        els.btnReset.addEventListener('click', () => {
+            angle = Math.PI / 4;
+            velocity = 0;
+            acceleration = 0;
+            tracePoints = [];
+            isPaused = false;
+            els.textPlay.innerText = "Pause";
+            els.iconPlay.classList.replace('fa-play', 'fa-pause');
+            els.btnPlay.classList.replace('bg-green-600', 'bg-blue-600');
+            els.btnPlay.classList.replace('hover:bg-green-700', 'hover:bg-blue-700');
+        });
+
+        loop();
+
+    </script>
+</body>
+</html>
